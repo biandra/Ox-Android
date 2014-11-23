@@ -5,7 +5,7 @@
 
 	<groupId>com.globallogic</groupId>
 	<artifactId>ox</artifactId>
-	<version>3.0</version>
+	<version>1.0</version>
 
 	<name>ox</name>
 	<packaging>apk</packaging>
@@ -14,15 +14,57 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<platform.version>2.2.1</platform.version>
 		<android.plugin.version>3.8.2</android.plugin.version>
+		<android.platform>16</android.platform>
+		<android.support.version>19</android.support.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>thirdparty</id>
+			<name>3rd party</name>
+			<url>http://nexus.globallogic.com.ar/content/repositories/thirdparty/</url>
+		</repository>
+	</repositories>
+	
 	<dependencies>
+	    
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
 			<version>${platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 		   <groupId>com.google.android</groupId> -->
+<!-- 		   <artifactId>support-v4</artifactId> -->
+<!-- 		   <version>19.0.1</version> -->
+<!-- 		   <scope>system</scope> -->
+<!-- 		   <systemPath>${env.ANDROID_HOME}/extras/android/support/v4/android-support-v4.jar</systemPath> -->
+<!-- 		</dependency> -->
+		
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>${android.support.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.actionbarsherlock</groupId> -->
+<!-- 			<artifactId>ox-actionbarsherlock</artifactId> -->
+<!-- 			<version>1.0</version> -->
+<!-- 			<type>apklib</type> -->
+<!-- 		</dependency> -->
+			
+		<dependency>
+		    <groupId>com.google.android.gms</groupId>
+  			<artifactId>play-services</artifactId>
+  			<version>6.1.71</version>
+		   	<scope>system</scope>
+		   	<systemPath>${env.ANDROID_HOME}/extras/google/google_play_services_froyo/libproject/google-play-services_lib/libs/google-play-services.jar</systemPath>
+		</dependency>
+		
 	</dependencies>
 	
 	<build>
@@ -49,6 +91,8 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
+			
+			
 		
 		</plugins>	
 	</build>

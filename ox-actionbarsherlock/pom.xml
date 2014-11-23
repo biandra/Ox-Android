@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+<!--   <parent> -->
+    <groupId>com.actionbarsherlock</groupId>
+<!--     <artifactId>parent</artifactId> -->
+    <version>4.4.0</version>
+<!--   </parent> -->
+
+  <artifactId>ox-actionbarsherlock</artifactId>
+  <name>ActionBarSherlock</name>
+  <packaging>apklib</packaging>
+
+	<properties>
+		<android.support.version>19</android.support.version>
+		<android.version>4.1.1.4</android.version>
+	</properties>  
+  
+  	<repositories>
+		<repository>
+			<id>thirdparty</id>
+			<name>3rd party</name>
+			<url>http://nexus.globallogic.com.ar/content/repositories/thirdparty/</url>
+		</repository>
+	</repositories>
+  
+	<dependencies>
+<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>android</artifactId>
+				<version>${android.version}</version>
+				<scope>provided</scope>
+			</dependency>
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>${android.support.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	 <build>
+	    <sourceDirectory>${basedir}/src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<configuration>
+					<sdk>
+						<platform>${android.platform}</platform>
+					</sdk>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.google.code.maven-replacer-plugin</groupId>
+										<artifactId>maven-replacer-plugin</artifactId>
+										<versionRange>[1.4.0,)</versionRange>
+										<goals>
+											<goal>replace</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
