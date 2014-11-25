@@ -11,7 +11,8 @@
 
 	<modules>
 		<module>ox-actionbarsherlock</module>
-		<module>ox</module>
+		<module>ox-google-play-services_lib</module>
+		<module>ox-mainapp</module>
 	</modules>
 
 	<properties>

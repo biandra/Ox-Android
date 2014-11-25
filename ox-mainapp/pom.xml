@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.glogallogic</groupId>
+		<artifactId>ox</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<artifactId>ox-mainapp</artifactId>
+	<version>2.0</version>
+	<name>Ox App</name>
+	<packaging>apk</packaging>
+	
+	<dependencies>
+	    
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>19</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.actionbarsherlock</groupId>
+			<artifactId>ox-actionbarsherlock</artifactId>
+			<version>4.4.0</version>
+			<type>apklib</type>
+		</dependency>
+		
+		<dependency>
+			<groupId>google-play-services_lib</groupId>
+			<artifactId>ox-google-play-services_lib</artifactId>
+			<version>0.0.1</version>
+			<type>apklib</type>
+		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 		   <groupId>com.google.android</groupId> -->
+<!-- 		   <artifactId>support-v4</artifactId> -->
+<!-- 		   <version>19.0.1</version> -->
+<!-- 		   <scope>system</scope> -->
+<!-- 		   <systemPath>${env.ANDROID_HOME}/extras/android/support/v4/android-support-v4.jar</systemPath> -->
+<!-- 		</dependency> -->
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.actionbarsherlock</groupId> -->
+<!-- 			<artifactId>ox-actionbarsherlock</artifactId> -->
+<!-- 			<version>1.0</version> -->
+<!-- 			<type>apklib</type> -->
+<!-- 		</dependency> -->
+			
+<!-- 		<dependency> -->
+<!-- 		    <groupId>com.google.android.gms</groupId> -->
+<!--   			<artifactId>play-services</artifactId> -->
+<!--   			<version>6.1.71</version> -->
+<!-- 		   	<scope>system</scope> -->
+<!-- 		   	<systemPath>${env.ANDROID_HOME}/extras/google/google_play_services_froyo/libproject/google-play-services_lib/libs/google-play-services.jar</systemPath> -->
+<!-- 		</dependency> -->
+		
+	</dependencies>
+	
+	<build>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<plugins>
+			
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<configuration>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+					<dexCoreLibrary>true</dexCoreLibrary>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			
+		
+		</plugins>	
+	</build>
+</project>
