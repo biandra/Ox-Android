@@ -1,31 +1,50 @@
 package com.globallogic.ox.app.activities;
 
-import com.globallogic.ox.R;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 
-public class LoginActivity extends Activity {
+import com.globallogic.ox.app.activities.base.BaseActivity;
+import com.globallogic.ox.app.viewlistener.LoginActivityListener;
+import com.globallogic.ox.app.viewmodel.LoginActivityModel;
 
-    /**
-     * Called when the activity is first created.
-     * @param savedInstanceState If the activity is being re-initialized after 
-     * previously being shut down then this Bundle contains the data it most 
-     * recently supplied in onSaveInstanceState(Bundle). <b>Note: Otherwise it is null.</b>
-     */
+public class LoginActivity extends BaseActivity implements LoginActivityListener{
+
+	private LoginActivityModel model;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        
+        super.onCreate(savedInstanceState);
+
+		model = new LoginActivityModel(this);
+		model.getLogin();
+//        setContentView(R.layout.activity_main);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-	// Inflate the menu; this adds items to the action bar if it is present.
-	getMenuInflater().inflate(com.globallogic.ox.R.menu.main, menu);
-	return true;
-    }
+	@Override
+	public Activity getActivity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void onGetLoginStarted() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onGetLoginFinished() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onGetLoginError() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
 

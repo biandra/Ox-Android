@@ -1,43 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  	<modelVersion>4.0.0</modelVersion>
 
-<!--   <parent> -->
-    <groupId>com.actionbarsherlock</groupId>
-<!--     <artifactId>parent</artifactId> -->
-    <version>4.4.0</version>
-<!--   </parent> -->
+	<parent>
+		<groupId>com.glogallogic</groupId>
+		<artifactId>ox</artifactId>
+		<version>1.0</version>
+	</parent>
+	
+	<groupId>com.actionbarsherlock</groupId>
+	<version>4.4.0</version>
+	<artifactId>ox-actionbarsherlock</artifactId>
+	<name>ActionBarSherlock</name>
+	<packaging>apklib</packaging>
 
-  <artifactId>ox-actionbarsherlock</artifactId>
-  <name>ActionBarSherlock</name>
-  <packaging>apklib</packaging>
-
-	<properties>
-		<android.support.version>19</android.support.version>
-		<android.version>4.1.1.4</android.version>
-	</properties>  
-  
-  	<repositories>
-		<repository>
-			<id>thirdparty</id>
-			<name>3rd party</name>
-			<url>http://nexus.globallogic.com.ar/content/repositories/thirdparty/</url>
-		</repository>
-	</repositories>
-  
 	<dependencies>
-<dependency>
-				<groupId>com.google.android</groupId>
-				<artifactId>android</artifactId>
-				<version>${android.version}</version>
-				<scope>provided</scope>
-			</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>android</groupId>
 			<artifactId>support-v4</artifactId>
-			<version>${android.support.version}</version>
-			<scope>provided</scope>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 

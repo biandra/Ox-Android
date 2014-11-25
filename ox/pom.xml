@@ -2,37 +2,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.glogallogic</groupId>
+		<artifactId>ox</artifactId>
+		<version>1.0</version>
+	</parent>
 
-	<groupId>com.globallogic</groupId>
 	<artifactId>ox</artifactId>
-	<version>1.0</version>
-
+	<version>2.0</version>
 	<name>ox</name>
 	<packaging>apk</packaging>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>2.2.1</platform.version>
-		<android.plugin.version>3.8.2</android.plugin.version>
-		<android.platform>16</android.platform>
-		<android.support.version>19</android.support.version>
-	</properties>
-
-	<repositories>
-		<repository>
-			<id>thirdparty</id>
-			<name>3rd party</name>
-			<url>http://nexus.globallogic.com.ar/content/repositories/thirdparty/</url>
-		</repository>
-	</repositories>
 	
 	<dependencies>
 	    
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
-			<version>${platform.version}</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>support-v4</artifactId>
+			<version>19</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.actionbarsherlock</groupId>
+			<artifactId>ox-actionbarsherlock</artifactId>
+			<version>4.4.0</version>
+			<type>apklib</type>
 		</dependency>
 		
 <!-- 		<dependency> -->
@@ -42,13 +42,6 @@
 <!-- 		   <scope>system</scope> -->
 <!-- 		   <systemPath>${env.ANDROID_HOME}/extras/android/support/v4/android-support-v4.jar</systemPath> -->
 <!-- 		</dependency> -->
-		
-		<dependency>
-			<groupId>android</groupId>
-			<artifactId>support-v4</artifactId>
-			<version>${android.support.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		
 <!-- 		<dependency> -->
 <!-- 			<groupId>com.actionbarsherlock</groupId> -->
