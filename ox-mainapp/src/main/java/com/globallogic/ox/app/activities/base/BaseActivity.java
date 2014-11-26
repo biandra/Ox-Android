@@ -1,44 +1,36 @@
 package com.globallogic.ox.app.activities.base;
 
 import android.os.Bundle;
-import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.view.MenuItem;
+
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.globallogic.ox.R;
+import com.globallogic.ox.app.OxApp;
 
 
-public class BaseActivity extends SherlockActivity{
+public class BaseFragment extends SherlockFragmentActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_));
-	
-		getSupportActionBar().setTitle(R.string.app_name);
-//        getSupportActionBar().setLogo(R.drawable.arrow);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 	}
-	
-	
-	/*@Override
-	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
-		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.main, menu);
-		return super.onCreateOptionsMenu(menu);
-   }*/
-	 
+
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-	    case android.R.id.home:
-	    	this.finish();
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
+	protected void onStart() {
+		super.onStart();
+		OxApp.getInstance().setCurrentActivity(this);
 	}
-	
-	public void PopUp(String title){
-		
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		OxApp.getInstance().activityResumed();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		OxApp.getInstance().activityPaused();
 	}
 }
