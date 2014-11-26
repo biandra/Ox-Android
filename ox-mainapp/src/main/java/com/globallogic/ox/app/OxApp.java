@@ -1,6 +1,6 @@
 package com.globallogic.ox.app;
 
-import android.app.Activity;
+import roboguice.RoboGuice;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -9,8 +9,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 public class OxApp extends Application{
 
 	private static OxApp instance;
-	private Activity currentActivity;
-	private boolean activityVisible;
+//	private Activity currentActivity;
+//	private boolean activityVisible;
 
 	public OxApp() {
 		super();
@@ -20,35 +20,40 @@ public class OxApp extends Application{
 	public static Context getAppContext() {
 		return instance.getApplicationContext();
 	}
-
-	public Activity getCurrentActivity() {
-		return currentActivity;
-	}
-
-	public void setCurrentActivity(Activity currentActivity) {
-		this.currentActivity = currentActivity;
-	}
-
-	public static OxApp getInstance() {
-		return instance;
-	}
-
-	public static void setInstance(OxApp instance) {
-		OxApp.instance = instance;
-	}
 	
-	public void activityResumed() {
-		activityVisible = true;
-		//ToastUtils.cancelToast();
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		RoboGuice.injectMembers(this, this);
 	}
 
-	public void activityPaused() {
-		activityVisible = false;
-	}
+//	public Activity getCurrentActivity() {
+//		return currentActivity;
+//	}
+//
+//	public void setCurrentActivity(Activity currentActivity) {
+//		this.currentActivity = currentActivity;
+//	}
 
-	public boolean isActivityVisible() {
-		return activityVisible;
-	}
+//	public static OxApp getInstance() {
+//		return instance;
+//	}
+
+//	public static void setInstance(OxApp instance) {
+//		OxApp.instance = instance;
+//	}
+//	
+//	public void activityResumed() {
+//		activityVisible = true;
+//	}
+//
+//	public void activityPaused() {
+//		activityVisible = false;
+//	}
+//
+//	public boolean isActivityVisible() {
+//		return activityVisible;
+//	}
 	
 	public int getAppVersion() throws NameNotFoundException
 	{

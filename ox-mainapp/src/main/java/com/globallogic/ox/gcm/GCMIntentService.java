@@ -3,11 +3,6 @@ package com.globallogic.ox.gcm;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.globallogic.ox.app.OxApp;
-import com.globallogic.ox.app.activities.LoginActivity;
-import com.globallogic.ox.app.activities.base.BaseActivity;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -18,6 +13,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.NotificationCompat;
+
+import com.globallogic.ox.app.OxApp;
+import com.globallogic.ox.app.activities.LoginActivity;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GCMIntentService extends IntentService{
 
@@ -68,41 +67,42 @@ public class GCMIntentService extends IntentService{
 		public void handleMessage(Message msg) {
 			Bundle bundle = msg.getData();
 			String title = bundle.getString("title");
-			((BaseActivity) OxApp.getAppContext()).PopUp(title);
+			//popup del mensaje??
+//			((BaseFragment) OxApp.getAppContext()).PopUp(title);
 		}
 	};
 
 	private void mostrarNotification(String url, String title) 
 	{
-		if(((OxApp) OxApp.getAppContext()).isActivityVisible()){
-			//handler.sendEmptyMessage(0);
-			Message msg = new Message();
-			Bundle bundle = new Bundle();
-			bundle.putString("url", url);
-			bundle.putString("title", title); 
-			msg.setData(bundle);
-			handler.sendMessage(msg);
-		}
-		else{
-
-			NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
-
-			NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)  
-				.setSmallIcon(android.R.drawable.bottom_bar)  
-				.setContentTitle(title)  
-				.setContentText(url);
-
-			Notification noti = mBuilder.build();
-			noti.flags |= Notification.FLAG_AUTO_CANCEL;
-
-			Intent notIntent =  new Intent(this, LoginActivity.class); //redirecciono desde la notificacion
-			notIntent.putExtra("url",url);
-			PendingIntent contIntent = PendingIntent.getActivity(this, 0, notIntent,  PendingIntent.FLAG_UPDATE_CURRENT);   
-
-			mBuilder.setContentIntent(contIntent);
-
-			mNotificationManager.notify(NOTIF_ALERTA_ID, mBuilder.build());
-		}
+//		if(((OxApp) OxApp.getAppContext()).isActivityVisible()){
+//			//handler.sendEmptyMessage(0);
+//			Message msg = new Message();
+//			Bundle bundle = new Bundle();
+//			bundle.putString("url", url);
+//			bundle.putString("title", title); 
+//			msg.setData(bundle);
+//			handler.sendMessage(msg);
+//		}
+//		else{
+//
+//			NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
+//
+//			NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)  
+//				.setSmallIcon(android.R.drawable.bottom_bar)  
+//				.setContentTitle(title)  
+//				.setContentText(url);
+//
+//			Notification noti = mBuilder.build();
+//			noti.flags |= Notification.FLAG_AUTO_CANCEL;
+//
+//			Intent notIntent =  new Intent(this, LoginActivity.class); //redirecciono desde la notificacion
+//			notIntent.putExtra("url",url);
+//			PendingIntent contIntent = PendingIntent.getActivity(this, 0, notIntent,  PendingIntent.FLAG_UPDATE_CURRENT);   
+//
+//			mBuilder.setContentIntent(contIntent);
+//
+//			mNotificationManager.notify(NOTIF_ALERTA_ID, mBuilder.build());
+//		}
 	}
 
 }

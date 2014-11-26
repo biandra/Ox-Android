@@ -1,8 +1,11 @@
 package com.globallogic.ox.app.activities;
 
+import roboguice.inject.InjectView;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 
+import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivity;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.app.viewmodel.LoginActivityModel;
@@ -10,41 +13,43 @@ import com.globallogic.ox.app.viewmodel.LoginActivityModel;
 public class LoginActivity extends BaseActivity implements LoginActivityListener{
 
 	private LoginActivityModel model;
+
+	@InjectView(R.id.login_view)
+	private View mainView;
+	
+	public LoginActivity() {
+		super(R.string.app_name, R.layout.login_activity);
+	}
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        super.onCreate(savedInstanceState);
-
 		model = new LoginActivityModel(this);
 		model.getLogin();
-//        setContentView(R.layout.activity_main);
     }
 
 	@Override
 	public Activity getActivity() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public void onGetLoginStarted() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onGetLoginFinished() {
-		// TODO Auto-generated method stub
-		
+		showProjects();
 	}
 
 	@Override
 	public void onGetLoginError() {
+	}
+	
+	private void showProjects() {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
 

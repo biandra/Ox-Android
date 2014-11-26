@@ -14,32 +14,38 @@
 	<packaging>apk</packaging>
 	
 	<dependencies>
-	    
+	    <dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>android</groupId>
 			<artifactId>support-v4</artifactId>
 			<version>19</version>
 			<scope>compile</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>com.actionbarsherlock</groupId>
 			<artifactId>ox-actionbarsherlock</artifactId>
 			<version>4.4.0</version>
 			<type>apklib</type>
 		</dependency>
-		
 		<dependency>
 			<groupId>google-play-services_lib</groupId>
 			<artifactId>ox-google-play-services_lib</artifactId>
 			<version>0.0.1</version>
 			<type>apklib</type>
+		</dependency>
+		<dependency>
+			<groupId>com.github.rtyley</groupId>
+			<artifactId>roboguice-sherlock</artifactId>
+			<version>1.4</version>
 		</dependency>
 		
 <!-- 		<dependency> -->

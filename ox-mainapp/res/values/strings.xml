@@ -3,5 +3,7 @@
 
     <string name="app_name">Ox</string>
     <string name="action_settings">Settings</string>
-
+    <string name="name_username">"Email or Username"</string>
+    <string name="pass">"Password"</string>
+    <string name="remember">"Remember"</string>
 </resources>

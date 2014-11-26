@@ -44,6 +44,11 @@
 				<version>${android.support.version}</version>
 				<scope>provided</scope>
 			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>com.github.rtyley</groupId> -->
+<!-- 				<artifactId>roboguice-sherlock</artifactId> -->
+<!-- 				<version>1.4</version> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.roboguice</groupId>
 				<artifactId>roboguice</artifactId>
