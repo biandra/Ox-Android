@@ -1,5 +1,8 @@
 *~
+.settings/
 target/
 bin/
 gen/
+*.orig
+.classpath
 
