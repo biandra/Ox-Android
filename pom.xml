@@ -8,10 +8,10 @@
 	<packaging>pom</packaging>
 	<name>Ox Parent</name>
 
-
 	<modules>
 		<module>ox-actionbarsherlock</module>
 		<module>ox-google-play-services_lib</module>
+		<module>ox-volley</module>
 		<module>ox-mainapp</module>
 	</modules>
 
