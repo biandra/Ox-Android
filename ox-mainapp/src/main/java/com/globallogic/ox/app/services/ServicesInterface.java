@@ -4,5 +4,5 @@ import com.globallogic.ox.domain.User;
 
 public interface ServicesInterface {
 	
-	void getLogin(ServiceListener<User> listener, Class<User> clazz);
+	void getAcccount(ServiceListener<User> listener, Class<User> clazz);
 }

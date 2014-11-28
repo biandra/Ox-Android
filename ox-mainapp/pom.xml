@@ -20,11 +20,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.android</groupId>
-			<artifactId>android</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>android</groupId>
 			<artifactId>support-v4</artifactId>
 			<version>19</version>
@@ -43,34 +38,21 @@
 			<type>apklib</type>
 		</dependency>
 		<dependency>
+			<groupId>com.google</groupId>
+			<artifactId>ox-volley</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>apklib</type>
+		</dependency>
+		<dependency>
 			<groupId>com.github.rtyley</groupId>
 			<artifactId>roboguice-sherlock</artifactId>
 			<version>1.4</version>
 		</dependency>
-		
-<!-- 		<dependency> -->
-<!-- 		   <groupId>com.google.android</groupId> -->
-<!-- 		   <artifactId>support-v4</artifactId> -->
-<!-- 		   <version>19.0.1</version> -->
-<!-- 		   <scope>system</scope> -->
-<!-- 		   <systemPath>${env.ANDROID_HOME}/extras/android/support/v4/android-support-v4.jar</systemPath> -->
-<!-- 		</dependency> -->
-		
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.actionbarsherlock</groupId> -->
-<!-- 			<artifactId>ox-actionbarsherlock</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 			<type>apklib</type> -->
-<!-- 		</dependency> -->
-			
-<!-- 		<dependency> -->
-<!-- 		    <groupId>com.google.android.gms</groupId> -->
-<!--   			<artifactId>play-services</artifactId> -->
-<!--   			<version>6.1.71</version> -->
-<!-- 		   	<scope>system</scope> -->
-<!-- 		   	<systemPath>${env.ANDROID_HOME}/extras/google/google_play_services_froyo/libproject/google-play-services_lib/libs/google-play-services.jar</systemPath> -->
-<!-- 		</dependency> -->
-		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
 	</dependencies>
 	
 	<build>

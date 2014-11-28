@@ -1,4 +1,4 @@
-package com.globallogic.ox.gcm;
+package com.globallogic.ox.app.gcm;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,6 +1,6 @@
-package com.globallogic.ox.gcm;
+package com.globallogic.ox.app.gcm;
 
-import com.globallogic.ox.app.utils.MyConstants;
+import com.globallogic.ox.app.constant.Constants;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -11,7 +11,7 @@ import android.support.v4.content.WakefulBroadcastReceiver;
 
 public class GCMBroadcastReceiver extends WakefulBroadcastReceiver{
 
-	private MyConstants constantes;
+	private Constants constantes;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {

@@ -5,6 +5,7 @@ import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.domain.User;
+import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
 
 public class LoginActivityModel {
@@ -21,7 +22,7 @@ public class LoginActivityModel {
 	}
 
 	public void getLogin() {
-		service.getLogin(new ServiceListener<User>() {
+		service.getAcccount(new ServiceListener<User>() {
 
 			@Override
 			public void onRequestStarted() {
@@ -38,6 +39,12 @@ public class LoginActivityModel {
 
 			@Override
 			public void onRequestFinished(User result) {
+			}
+
+			@Override
+			public void onParseError(ParseError error) {
+				// TODO Auto-generated method stub
+				
 			}
 			
 		}, User.class);

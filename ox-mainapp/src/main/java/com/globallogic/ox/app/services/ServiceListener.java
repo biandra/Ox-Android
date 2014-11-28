@@ -1,5 +1,7 @@
 package com.globallogic.ox.app.services;
 
+import com.globallogic.ox.exceptions.ParseError;
+
 public interface ServiceListener<T> {
 
 	void onRequestStarted();
@@ -13,4 +15,6 @@ public interface ServiceListener<T> {
 //	void onRequestError(ServiceError error);
 	
 	void onRequestFinished(T result);
+
+	void onParseError(ParseError error);
 }
