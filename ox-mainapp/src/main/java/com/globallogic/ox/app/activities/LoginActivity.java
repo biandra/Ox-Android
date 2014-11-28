@@ -26,7 +26,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
         super.onCreate(savedInstanceState);
         
 		model = new LoginActivityModel(this);
-		model.getLogin();
+		model.getAcccount();
     }
 
 	@Override

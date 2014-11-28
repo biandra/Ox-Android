@@ -13,7 +13,7 @@ public class OxApp extends Application{
 //	private boolean activityVisible;
 
 	public OxApp() {
-		super();
+//		super();
 		instance = this;
 	}
 

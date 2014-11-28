@@ -21,7 +21,7 @@ public class LoginActivityModel {
 		this.view = view;
 	}
 
-	public void getLogin() {
+	public void getAcccount() {
 		service.getAcccount(new ServiceListener<User>() {
 
 			@Override
