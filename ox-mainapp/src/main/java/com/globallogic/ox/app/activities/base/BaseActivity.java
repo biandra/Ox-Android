@@ -1,9 +1,11 @@
 package com.globallogic.ox.app.activities.base;
 
 import android.os.Bundle;
+
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.globallogic.ox.R;
+import com.globallogic.ox.app.OxApp;
 
 
 public class BaseActivity extends RoboSherlockFragmentActivity{
@@ -37,16 +39,16 @@ public class BaseActivity extends RoboSherlockFragmentActivity{
 //		super.onStart();
 //		OxApp.getInstance().setCurrentActivity(this);
 //	}
-//
-//	@Override
-//	protected void onResume() {
-//		super.onResume();
-//		OxApp.getInstance().activityResumed();
-//	}
-//
-//	@Override
-//	protected void onPause() {
-//		super.onPause();
-//		OxApp.getInstance().activityPaused();
-//	}
+	
+	@Override
+	protected void onResume() {
+	    super.onResume();
+	    ((OxApp) OxApp.getAppContext()).activityResumed();
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+	    ((OxApp) OxApp.getAppContext()).activityPaused();
+	}
 }

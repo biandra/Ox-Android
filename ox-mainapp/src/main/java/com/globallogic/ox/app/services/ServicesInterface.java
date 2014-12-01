@@ -1,8 +1,8 @@
 package com.globallogic.ox.app.services;
 
-import com.globallogic.ox.domain.User;
+import com.globallogic.ox.domain.Account;
 
 public interface ServicesInterface {
 	
-	void getAcccount(ServiceListener<User> listener, Class<User> clazz);
+	void getToken(ServiceListener<Account> listener, Class<Account> clazz);
 }

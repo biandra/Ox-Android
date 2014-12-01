@@ -6,7 +6,7 @@
     android:gravity="center">
 	
     <LinearLayout
-        android:id="@+id/login_view"
+        android:id="@+id/view_Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10sp"
@@ -47,23 +47,13 @@
 	        android:background="#eeeeee" >
 	    </EditText>
 	
-	    <CheckBox
-	        android:id="@+id/checkBox_Login"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="20sp"
-	        android:text="@string/remember"
-	        android:textColor="@android:color/black"
-	        android:textSize="12sp" />
-	
-	    <ImageButton
-	        android:id="@+id/button_Ingresar"
+	    <Button
+	        android:id="@+id/button_Login"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_gravity="center"
 	        android:layout_marginTop="20sp"
-	        android:background="@drawable/bg_button_login"
-	        android:onClick="Buscar" />	
+	        android:background="@drawable/bg_button_login"/>	
 	</LinearLayout>
 	
 </LinearLayout>

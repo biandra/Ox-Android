@@ -29,7 +29,6 @@ public class GCMIntentService extends IntentService{
 
 	public GCMIntentService(String name) {
 		super(name);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -74,35 +73,35 @@ public class GCMIntentService extends IntentService{
 
 	private void mostrarNotification(String url, String title) 
 	{
-//		if(((OxApp) OxApp.getAppContext()).isActivityVisible()){
-//			//handler.sendEmptyMessage(0);
-//			Message msg = new Message();
-//			Bundle bundle = new Bundle();
-//			bundle.putString("url", url);
-//			bundle.putString("title", title); 
-//			msg.setData(bundle);
-//			handler.sendMessage(msg);
-//		}
-//		else{
-//
-//			NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
-//
-//			NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)  
-//				.setSmallIcon(android.R.drawable.bottom_bar)  
-//				.setContentTitle(title)  
-//				.setContentText(url);
-//
-//			Notification noti = mBuilder.build();
-//			noti.flags |= Notification.FLAG_AUTO_CANCEL;
-//
-//			Intent notIntent =  new Intent(this, LoginActivity.class); //redirecciono desde la notificacion
-//			notIntent.putExtra("url",url);
-//			PendingIntent contIntent = PendingIntent.getActivity(this, 0, notIntent,  PendingIntent.FLAG_UPDATE_CURRENT);   
-//
-//			mBuilder.setContentIntent(contIntent);
-//
-//			mNotificationManager.notify(NOTIF_ALERTA_ID, mBuilder.build());
-//		}
+		if(((OxApp) OxApp.getAppContext()).isActivityVisible()){
+			//handler.sendEmptyMessage(0);
+			Message msg = new Message();
+			Bundle bundle = new Bundle();
+			bundle.putString("url", url);
+			bundle.putString("title", title); 
+			msg.setData(bundle);
+			handler.sendMessage(msg);
+		}
+		else{
+
+			NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
+
+			NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)  
+				.setSmallIcon(android.R.drawable.bottom_bar)  
+				.setContentTitle(title)  
+				.setContentText(url);
+
+			Notification noti = mBuilder.build();
+			noti.flags |= Notification.FLAG_AUTO_CANCEL;
+
+			Intent notIntent =  new Intent(this, LoginActivity.class); //redirecciono desde la notificacion
+			notIntent.putExtra("url",url);
+			PendingIntent contIntent = PendingIntent.getActivity(this, 0, notIntent,  PendingIntent.FLAG_UPDATE_CURRENT);   
+
+			mBuilder.setContentIntent(contIntent);
+
+			mNotificationManager.notify(NOTIF_ALERTA_ID, mBuilder.build());
+		}
 	}
 
 }

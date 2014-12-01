@@ -1,11 +1,11 @@
 package com.globallogic.ox.domain;
 
-public class User {
+public class Account {
 	
 	private String eMail;
 	private String Password;
 	
-	public User() {
+	public Account() {
 
 	}
 

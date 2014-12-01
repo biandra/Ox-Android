@@ -10,7 +10,7 @@ public class OxApp extends Application{
 
 	private static OxApp instance;
 //	private Activity currentActivity;
-//	private boolean activityVisible;
+	private boolean activityVisible;
 
 	public OxApp() {
 //		super();
@@ -35,25 +35,17 @@ public class OxApp extends Application{
 //		this.currentActivity = currentActivity;
 //	}
 
-//	public static OxApp getInstance() {
-//		return instance;
-//	}
+	public void activityResumed() {
+		activityVisible = true;
+	}
 
-//	public static void setInstance(OxApp instance) {
-//		OxApp.instance = instance;
-//	}
-//	
-//	public void activityResumed() {
-//		activityVisible = true;
-//	}
-//
-//	public void activityPaused() {
-//		activityVisible = false;
-//	}
-//
-//	public boolean isActivityVisible() {
-//		return activityVisible;
-//	}
+	public void activityPaused() {
+		activityVisible = false;
+	}
+
+	public boolean isActivityVisible() {
+		return activityVisible;
+	}
 	
 	public int getAppVersion() throws NameNotFoundException
 	{

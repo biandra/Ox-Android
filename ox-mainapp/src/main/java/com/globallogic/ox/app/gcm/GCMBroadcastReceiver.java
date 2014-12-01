@@ -17,17 +17,13 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver{
 	public void onReceive(Context context, Intent intent) {
 
 		if (intent != null ) {
-			String regId = intent.getExtras().getString("registration_id");
+			String regId = intent.getExtras().getString(constantes.PROPERTY_REG_ID);
 
 			if(regId != null && !regId.equals("")) {
-
 				SharedPreferences prefs = context.getSharedPreferences("INFO", Context.MODE_PRIVATE);
-
 				SharedPreferences.Editor editor = prefs.edit();
 				editor.putString(constantes.PROPERTY_REG_ID, regId);
-
 				editor.commit();
-
 			}
 
 			ComponentName comp = new ComponentName(context.getPackageName(), GCMIntentService.class.getName());

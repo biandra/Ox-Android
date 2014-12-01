@@ -4,7 +4,7 @@ import com.globallogic.ox.app.services.ServiceListener;
 import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
-import com.globallogic.ox.domain.User;
+import com.globallogic.ox.domain.Account;
 import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
 
@@ -21,8 +21,8 @@ public class LoginActivityModel {
 		this.view = view;
 	}
 
-	public void getAcccount() {
-		service.getAcccount(new ServiceListener<User>() {
+	public void getToken() {
+		service.getToken(new ServiceListener<Account>() {
 
 			@Override
 			public void onRequestStarted() {
@@ -31,23 +31,25 @@ public class LoginActivityModel {
 
 			@Override
 			public void onConnectionError() {
+				view.onGetLoginError();
 			}
 
 			@Override
 			public void onSessionError() {
+				view.onGetLoginError();
 			}
 
 			@Override
-			public void onRequestFinished(User result) {
+			public void onRequestFinished(Account result) {
+				view.onGetLoginFinished();
 			}
 
 			@Override
 			public void onParseError(ParseError error) {
-				// TODO Auto-generated method stub
-				
+				view.onGetLoginError();
 			}
 			
-		}, User.class);
+		}, Account.class);
 		
 	}
 

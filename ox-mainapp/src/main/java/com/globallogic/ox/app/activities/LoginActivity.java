@@ -2,8 +2,10 @@ package com.globallogic.ox.app.activities;
 
 import roboguice.inject.InjectView;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivity;
@@ -14,8 +16,11 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 
 	private LoginActivityModel model;
 
-	@InjectView(R.id.login_view)
-	private View mainView;
+	@InjectView(R.id.view_Login)
+	private View viewLogin;
+	
+	@InjectView(R.id.button_Login)
+	private Button buttonLogin;
 	
 	public LoginActivity() {
 		super(R.string.app_name, R.layout.login_activity);
@@ -24,10 +29,17 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+  
 		model = new LoginActivityModel(this);
-		model.getAcccount();
+		buttonLogin.setOnClickListener(login);
     }
+    
+    private View.OnClickListener login = new View.OnClickListener() {
+		@Override
+		public void onClick(View v) {
+			model.getToken();
+		}
+	};
 
 	@Override
 	public Activity getActivity() {
@@ -36,20 +48,20 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 
 	@Override
 	public void onGetLoginStarted() {
+//		setLoadingView();
 	}
+
 
 	@Override
 	public void onGetLoginFinished() {
-		showProjects();
+		Intent projectsList = new Intent(LoginActivity.this, JenkinsProjectsListActivity.class);
+		startActivity(projectsList);
 	}
 
 	@Override
 	public void onGetLoginError() {
+//		setErrorView();
 	}
-	
-	private void showProjects() {
-		// TODO Auto-generated method stub
-		
-	}
+
 }
 
