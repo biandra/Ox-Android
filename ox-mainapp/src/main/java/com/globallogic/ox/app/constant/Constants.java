@@ -2,6 +2,9 @@ package com.globallogic.ox.app.constant;
 
 public final class Constants {
 
+	public static final String TOKEN_PARAM_NAME = "Authorization";
+	public static final String TOKEN_PAREM_VALUE = "Bearer";
+
 	public static final String PROPERTY_REG_ID = "registration_id";
 //	public static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	

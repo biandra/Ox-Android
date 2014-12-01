@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivity;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.app.viewmodel.LoginActivityModel;
+import com.globallogic.ox.domain.Account;
 
 public class LoginActivity extends BaseActivity implements LoginActivityListener{
 
@@ -21,6 +23,12 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 	
 	@InjectView(R.id.button_Login)
 	private Button buttonLogin;
+	
+	@InjectView(R.id.editText_Email)
+	private EditText editTextEmail;
+	
+	@InjectView(R.id.editText_Password)
+	private EditText editTextPassword;
 	
 	public LoginActivity() {
 		super(R.string.app_name, R.layout.login_activity);
@@ -37,7 +45,10 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
     private View.OnClickListener login = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			model.getToken();
+			Account account = new Account();
+			account.seteMail(editTextEmail.getText().toString());
+			account.setPassword(editTextPassword.getText().toString());
+			model.getToken(account);
 		}
 	};
 

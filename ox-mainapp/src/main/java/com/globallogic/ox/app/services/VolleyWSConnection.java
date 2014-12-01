@@ -1,11 +1,13 @@
 package com.globallogic.ox.app.services;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONObject;
 
 import android.content.Context;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
@@ -17,6 +19,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.DefaultRetryPolicy;
 import com.globallogic.ox.parsing.IJSONParser;
+import com.globallogic.ox.app.constant.Constants;
 import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -49,6 +52,11 @@ public class VolleyWSConnection implements WSConnection{
 		makeObjectRequest(Method.GET, url, listener, null, clazz);
 	}
 
+	@Override
+	public <T> void makeObjectPostRequest(String url, ServiceListener<T> listener, HashMap<String, String> params, Class<T> clazz) {
+		makeObjectRequest(Method.POST,url, listener, params, clazz);
+	}
+
 	private <T> void makeObjectRequest(Integer method, String url, final ServiceListener<T> listener, HashMap<String, String> params, final Class<T> clazz) {
 		JSONObject jsonRequest = null;
 		JsonObjectRequest req = null;
@@ -57,7 +65,15 @@ public class VolleyWSConnection implements WSConnection{
 			jsonRequest = new JSONObject(params);
 		}
 		
-		req = new JsonObjectRequest(method, url, jsonRequest, getListener(listener,	clazz), getErrorListener(listener, clazz));
+		req = new JsonObjectRequest(method, url, jsonRequest, getListener(listener,	clazz), getErrorListener(listener, clazz)){
+
+			@Override
+			public Map<String, String> getHeaders() throws AuthFailureError {
+				HashMap<String, String> headers = new HashMap<String, String>();
+				headers.put(Constants.TOKEN_PARAM_NAME,	Constants.TOKEN_PAREM_VALUE + " " + "accessToken");
+				return headers;
+			}
+		};
 
 		req.setShouldCache(cacheEnabled);
 		listener.onRequestStarted();
@@ -112,4 +128,5 @@ public class VolleyWSConnection implements WSConnection{
 //			listener.onRequestError(new ServiceErrorVolleyImpl(error));
 //		}
 	}
+
 }

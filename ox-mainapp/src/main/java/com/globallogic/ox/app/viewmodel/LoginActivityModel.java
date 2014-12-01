@@ -5,6 +5,7 @@ import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.domain.Account;
+import com.globallogic.ox.domain.ServerErrorResponse;
 import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
 
@@ -21,36 +22,35 @@ public class LoginActivityModel {
 		this.view = view;
 	}
 
-	public void getToken() {
-		service.getToken(new ServiceListener<Account>() {
+	private ServiceListener<ServerErrorResponse> listenerAccount = new ServiceListener<ServerErrorResponse>() {
+		@Override
+		public void onRequestStarted() {
+			view.onGetLoginStarted();
+		}
 
-			@Override
-			public void onRequestStarted() {
-				view.onGetLoginStarted();
-			}
+		@Override
+		public void onConnectionError() {
+			view.onGetLoginError();
+		}
 
-			@Override
-			public void onConnectionError() {
-				view.onGetLoginError();
-			}
+		@Override
+		public void onSessionError() {
+			view.onGetLoginError();
+		}
 
-			@Override
-			public void onSessionError() {
-				view.onGetLoginError();
-			}
+		@Override
+		public void onRequestFinished(ServerErrorResponse serverErrorResponse) {
+			view.onGetLoginFinished();
+		}
 
-			@Override
-			public void onRequestFinished(Account result) {
-				view.onGetLoginFinished();
-			}
-
-			@Override
-			public void onParseError(ParseError error) {
-				view.onGetLoginError();
-			}
-			
-		}, Account.class);
-		
+		@Override
+		public void onParseError(ParseError error) {
+			view.onGetLoginError();
+		}
+	};
+	
+	public void getToken(Account account) {
+//		service.getToken(listenerAccount, account, ServerErrorResponse.class);
 	}
 
 }

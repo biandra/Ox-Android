@@ -13,7 +13,7 @@
         android:layout_marginRight="10sp"
         android:orientation="vertical">
 	    <TextView
-	        android:id="@+id/textView_User"
+	        android:id="@+id/textView_Email"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="20sp"
@@ -23,14 +23,14 @@
 	        android:textSize="14sp" />
 	
 	    <EditText
-	        android:id="@+id/editText_User"
+	        android:id="@+id/editText_Email"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:background="#eeeeee" >
 	    </EditText>
 	
 	    <TextView
-	        android:id="@+id/textView_Pass"
+	        android:id="@+id/textView_Password"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="20sp"
@@ -40,7 +40,7 @@
 	        android:textSize="14sp" />
 	
 	    <EditText
-	        android:id="@+id/editText_Pass"
+	        android:id="@+id/editText_Password"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:password="true"
