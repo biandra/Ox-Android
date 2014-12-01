@@ -49,6 +49,10 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 			account.seteMail(editTextEmail.getText().toString());
 			account.setPassword(editTextPassword.getText().toString());
 			model.getToken(account);
+			
+			//TODO:remove luego de implementar login
+			Intent projectsList = new Intent(LoginActivity.this, ProjectsActivity.class);
+			startActivity(projectsList);
 		}
 	};
 
@@ -65,7 +69,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 
 	@Override
 	public void onGetLoginFinished() {
-		Intent projectsList = new Intent(LoginActivity.this, JenkinsProjectsListActivity.class);
+		Intent projectsList = new Intent(LoginActivity.this, ProjectsActivity.class);
 		startActivity(projectsList);
 	}
 

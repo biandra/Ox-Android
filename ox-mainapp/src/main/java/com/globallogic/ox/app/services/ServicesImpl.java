@@ -1,5 +1,8 @@
 package com.globallogic.ox.app.services;
 
+import java.util.List;
+
+import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.parsing.IJSONParser;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -15,7 +18,7 @@ public class ServicesImpl implements ServicesInterface{
 		this.jsonParser = jsonParser;
 		this.connection = connection;
 	}
-	
+
 //	@Override
 //	public void getToken(ServiceListener<ServerErrorResponse> listener, Account account, Class<ServerErrorResponse> clazz) {
 //		String url = "";
@@ -25,5 +28,12 @@ public class ServicesImpl implements ServicesInterface{
 //
 //		connection.makeObjectPostRequest(url, listener, params, clazz);
 //	}
+
+	@Override
+	public void getProject(ServiceListener<List<Project>> listener,	Class<Project> clazz) {
+		String url = "https://ox-server.herokuapp.com/me/projects";
+		connection.makeArrayGetRequest(url, listener, clazz);
+	}
+	
 
 }

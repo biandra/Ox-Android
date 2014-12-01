@@ -4,10 +4,6 @@ public class Account {
 	
 	private String eMail;
 	private String Password;
-	
-	public Account() {
-
-	}
 
 	public String geteMail() {
 		return eMail;
