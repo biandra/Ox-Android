@@ -16,6 +16,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.globallogic.ox.app.OxApp;
 import com.globallogic.ox.app.activities.LoginActivity;
+import com.globallogic.ox.app.activities.base.BaseActivity;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GCMIntentService extends IntentService{
@@ -66,8 +67,7 @@ public class GCMIntentService extends IntentService{
 		public void handleMessage(Message msg) {
 			Bundle bundle = msg.getData();
 			String title = bundle.getString("title");
-			//popup del mensaje??
-//			((BaseFragment) OxApp.getAppContext()).PopUp(title);
+			((BaseActivity) OxApp.getAppContext()).setNotifCount(1);
 		}
 	};
 

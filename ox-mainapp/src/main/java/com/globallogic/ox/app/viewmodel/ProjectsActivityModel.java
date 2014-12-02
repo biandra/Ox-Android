@@ -7,6 +7,7 @@ import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
 import com.globallogic.ox.app.viewlistener.ProjectsActivityListener;
 import com.globallogic.ox.domain.Project;
+import com.globallogic.ox.domain.ServerErrorInfo;
 import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
 
@@ -49,6 +50,11 @@ public class ProjectsActivityModel {
 			@Override
 			public void onParseError(ParseError error) {
 				view.onGetProjectsError();
+			}
+
+			@Override
+			public void onServerError(ServerErrorInfo errorInfo) {
+				view.onServerError(errorInfo);
 			}
 			
 		}, Project.class);

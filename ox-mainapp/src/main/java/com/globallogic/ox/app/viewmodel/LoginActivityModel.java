@@ -5,6 +5,7 @@ import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.domain.Account;
+import com.globallogic.ox.domain.ServerErrorInfo;
 import com.globallogic.ox.domain.ServerErrorResponse;
 import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
@@ -46,6 +47,11 @@ public class LoginActivityModel {
 		@Override
 		public void onParseError(ParseError error) {
 			view.onGetLoginError();
+		}
+
+		@Override
+		public void onServerError(ServerErrorInfo errorInfo) {
+			view.onServerError(errorInfo);
 		}
 	};
 	

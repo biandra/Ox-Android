@@ -35,16 +35,16 @@ public class VolleyWSConnection implements WSConnection{
 	private RetryPolicy retryPolicy;
 	private static final int CONNECTION_TIMEUOT = 60000;
 	private IJSONParser jsonParser;
-//	private VolleyErrorHelper volleyErrorHelper;
+	private VolleyErrorHelper volleyErrorHelper;
 	
 	
 	@Inject
 	public VolleyWSConnection(
 			Context context,
-//			VolleyErrorHelper volleyErrorHelper,
+			VolleyErrorHelper volleyErrorHelper,
 			IJSONParser jsonParser) {
 		this.jsonParser = jsonParser;
-//		this.volleyErrorHelper = volleyErrorHelper;
+		this.volleyErrorHelper = volleyErrorHelper;
 		
 		requestQueue = Volley.newRequestQueue(context);
 		retryPolicy = new DefaultRetryPolicy(CONNECTION_TIMEUOT, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
@@ -156,41 +156,35 @@ public class VolleyWSConnection implements WSConnection{
 			public void onErrorResponse(VolleyError error) {
 				handleArrayError(listener, error, clazz);
 			}
-
 		};
 	}
 	
 	private <T> void handleError(ServiceListener<T> listener, VolleyError error, Class<T> clazz) {
-//		if (volleyErrorHelper.isNetworkProblem(error)) {
-//			listener.onConnectionError();
-//		} else if (volleyErrorHelper.isPartialData(error)) {
-//			volleyErrorHelper.handlePartialData(error, clazz, listener);
-//		} else if (volleyErrorHelper.isTimeoutProblem(error)) {
-//			listener.onServerError(volleyErrorHelper.handleServerError(error));
-//		} else if (volleyErrorHelper.isServerProblem(error)) {
-//			listener.onServerError(volleyErrorHelper.handleServerError(error));
-//		} else if (volleyErrorHelper.isSessionProblem(error)) {
-//			listener.onSessionError();
-//		} else {
-//			listener.onRequestError(new ServiceErrorVolleyImpl(error));
-//		}
+		if (volleyErrorHelper.isNetworkProblem(error)) {
+			listener.onConnectionError();
+		} else if (volleyErrorHelper.isPartialData(error)) {
+			volleyErrorHelper.handlePartialData(error, clazz, listener);
+		} else if (volleyErrorHelper.isTimeoutProblem(error)) {
+			listener.onServerError(volleyErrorHelper.handleServerError(error));
+		} else if (volleyErrorHelper.isServerProblem(error)) {
+			listener.onServerError(volleyErrorHelper.handleServerError(error));
+		} else if (volleyErrorHelper.isSessionProblem(error)) {
+			listener.onSessionError();
+		}
 	}
 	
 	private <T> void handleArrayError(ServiceListener<List<T>> listener, VolleyError error, Class<T> clazz) {
-//		if (volleyErrorHelper.isNetworkProblem(error)) {
-//			listener.onConnectionError();
-//		} else if (volleyErrorHelper.isPartialData(error)) {
-//			volleyErrorHelper.handleArrayPartialData(error, clazz, listener);
-//		} else if (volleyErrorHelper.isTimeoutProblem(error)) {
-//			listener.onServerError(volleyErrorHelper.handleServerError(error));
-//		} else if (volleyErrorHelper.isServerProblem(error)) {
-//			listener.onServerError(volleyErrorHelper.handleServerError(error));
-//		} else if (volleyErrorHelper.isSessionProblem(error)) {
-//			listener.onSessionError();
-//
-//		} else {
-//			listener.onRequestError(new ServiceErrorVolleyImpl(error));
-//		}
+		if (volleyErrorHelper.isNetworkProblem(error)) {
+			listener.onConnectionError();
+		} else if (volleyErrorHelper.isPartialData(error)) {
+			volleyErrorHelper.handleArrayPartialData(error, clazz, listener);
+		} else if (volleyErrorHelper.isTimeoutProblem(error)) {
+			listener.onServerError(volleyErrorHelper.handleServerError(error));
+		} else if (volleyErrorHelper.isServerProblem(error)) {
+			listener.onServerError(volleyErrorHelper.handleServerError(error));
+		} else if (volleyErrorHelper.isSessionProblem(error)) {
+			listener.onSessionError();
+		}
 	}
 
 }

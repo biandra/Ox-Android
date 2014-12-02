@@ -9,6 +9,7 @@ import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivity;
 import com.globallogic.ox.app.viewlistener.ProjectsActivityListener;
 import com.globallogic.ox.app.viewmodel.ProjectsActivityModel;
+import com.globallogic.ox.domain.ServerErrorInfo;
 
 public class ProjectsActivity extends BaseActivity implements ProjectsActivityListener{
 
@@ -46,6 +47,12 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 
 	@Override
 	public void onGetProjectsError() {
+		
+	}
+
+	@Override
+	public void onServerError(ServerErrorInfo errorInfo) {
+		// TODO Auto-generated method stub
 		
 	}
 

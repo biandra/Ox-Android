@@ -27,7 +27,7 @@
         <activity
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"
-            android:name=".app.activities.JenkinsProjectsListActivity">
+            android:name=".app.activities.ProjectsActivity">
         </activity>
         
         <receiver

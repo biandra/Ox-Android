@@ -13,6 +13,7 @@ import com.globallogic.ox.app.activities.base.BaseActivity;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.app.viewmodel.LoginActivityModel;
 import com.globallogic.ox.domain.Account;
+import com.globallogic.ox.domain.ServerErrorInfo;
 
 public class LoginActivity extends BaseActivity implements LoginActivityListener{
 
@@ -40,6 +41,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
   
 		model = new LoginActivityModel(this);
 		buttonLogin.setOnClickListener(login);
+		setNotifCount(2);
     }
     
     private View.OnClickListener login = new View.OnClickListener() {
@@ -76,6 +78,11 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 	@Override
 	public void onGetLoginError() {
 //		setErrorView();
+	}
+
+	@Override
+	public void onServerError(ServerErrorInfo errorInfo) {
+		// TODO Auto-generated method stub
 	}
 
 }
