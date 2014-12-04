@@ -7,7 +7,7 @@
     
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/mi_linea_tarjeta_abono_fragment_scrollview"
+        android:id="@+id/projects_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"
@@ -17,17 +17,18 @@
         android:requiresFadingEdge="none"
         android:scrollbars="none"
         ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="disabled"
         tools:ignore="UselessParent">
         
 		<LinearLayout
-            android:id="@+id/mi_linea_tarjeta_abono_fragment_container_pull_to_refresh"
+            android:id="@+id/projects_container_pull_to_refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone" >
 
             <TextView
-                android:id="@+id/mi_linea_tarjeta_abono_fragment_pull_to_refresh_hint"
+                android:id="@+id/projects_pull_to_refresh_hint"
                 style="@style/pull_to_refresh_hint_style"
                 android:layout_weight="0"
                 android:text="@string/pull_to_refresh_footer_text"
@@ -46,5 +47,19 @@
 		</LinearLayout>
 	
 	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+	
+    <RelativeLayout
+        android:id="@+id/projects_request_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shadow"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <com.globallogic.ox.app.component.progressbarwheel.ProgressWheel
+            style="@style/progresswheel_custom_style"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 	
 </FrameLayout>
