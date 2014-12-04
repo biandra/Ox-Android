@@ -16,6 +16,7 @@ import com.globallogic.ox.domain.ServerErrorInfo;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnPullEventListener;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.State;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
@@ -48,6 +49,13 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
   
 		model = new ProjectsActivityModel(this);
 		model.getProjects();
+		
+		pullToRefreshScroll.setOnRefreshListener(new OnRefreshListener<ScrollView>() {
+			@Override
+			public void onRefresh(PullToRefreshBase<ScrollView> arg0) {
+				model.getProjects();
+			}
+		});
 		
 		pullToRefreshScroll.setOnPullEventListener(new OnPullEventListener<ScrollView>() {
 			@Override
