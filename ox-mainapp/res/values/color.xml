@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="magenta">#d61d69</color>
+    <color name="magenta_dark">#ba014d</color>
+    <color name="item_selector">#cfe2f8</color>
+    <color name="saludo">#666666</color>
+    <color name="red">#900</color>
+    <color name="green">#090</color>
+    <color name="blue">#009</color>
+    <color name="white">#FFF</color>
+    <color name="whiteTransparent">#50FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="tab_indicator_back_color">#333333</color>
+    <color name="tab_text_color">#017d85</color>
+    <color name="line_divider_color">#b3b3b3</color>
+    <color name="grey">#b6b6b6</color>
+    <color name="dark_grey">#525252</color>
+    <color name="pull_to_refresh_hint_bg_color">#747474</color>
+    <color name="app_background">#f6f6f6</color>
+    <color name="button_recharge_cyan">#00b4c5</color>
+    <color name="button_recharge_effect">#f2f2f2</color>
+    <color name="row_error">#c6c6c6</color>
+
+    <!-- Text Colours Personal -->
+    <color name="green_text_personal">#017d85</color>
+    <color name="grey_light_text_personal">#b3b3b3</color>
+    <color name="grey_dark_text_personal">#747474</color>
+    <color name="green_text_personal_black">#00b4c5</color>
+
+    <!-- Side menu colors -->
+    <color name="grey_card_back">#747474</color>
+
+    <!-- Side menu colors -->
+
+
+    <color name="side_menu_back_color">#808080</color>
+    <color name="side_menu_profile_color">#737373</color>
+    <color name="side_menu_selected_color">#f6f6f6</color>
+    <color name="side_menu_divider_color">#747474</color>
+    <color name="grey_button_pressed">#20747474</color>
+    <color name="grey_button_pressed_black">#747474</color>
+
+    <!-- Splash colors -->
+
+    <color name="cyan_splash_progress">#00b4c5</color>
+    <color name="green_splash_progress">#017d85</color>
+    <color name="yellow_splash_progress">#f2c108</color>
+    <color name="violet_splash_progress">#6e3d75</color>
+    <color name="pink_splash_progress">#d984b2</color>
+    <color name="black_splash_progress">#000000</color>
+    <color name="brown_splash_progress">#9b672b</color>
+    <color name="magenta_splash_progress">#b01b63</color>
+    <color name="blue_splash_progress">#386399</color>
+
+     <integer-array name="gplus_colors">    
+       
+        <item>@color/blue_splash_progress</item>
+        <item>@color/magenta_splash_progress</item>
+        <item>@color/pink_splash_progress</item>
+        <item>@color/yellow_splash_progress</item>
+        <item>@color/green_splash_progress</item>
+        <item>@color/cyan_splash_progress</item> 
+        <item>@color/brown_splash_progress</item>  
+        <item>@color/black_splash_progress</item>
+        <item>@color/violet_splash_progress</item>        
+    </integer-array>
+
+    <!-- Black -->
+    <color name="app_background_black">#292929</color>
+    <color name="side_menu_back_color_black">#292929</color>
+    <color name="side_menu_profile_color_black">#3e3d3d</color>
+    <color name="tab_indicator_back_color_black">#3e3d3d</color>
+    <color name="background_color_card_black">#3e3d3d</color>
+
+    <color name="shadow">#50000000</color>
+    
+</resources>

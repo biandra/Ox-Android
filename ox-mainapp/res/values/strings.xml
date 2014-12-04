@@ -6,4 +6,6 @@
     <string name="name_username">"Email or Username"</string>
     <string name="pass">"Password"</string>
     <string name="remember">"Remember"</string>
+    <string name="pull_to_refresh_footer_text">Desliz\u00e1 hacia abajo para cargar los datos correctamente.</string>
+    
 </resources>

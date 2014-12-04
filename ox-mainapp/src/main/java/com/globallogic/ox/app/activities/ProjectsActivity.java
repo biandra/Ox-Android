@@ -19,7 +19,7 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 	private View viewProjectsList;
 	
 	public ProjectsActivity() {
-		super(R.string.app_name, R.layout.jenkins_projects_list_activity);
+		super(R.string.app_name, R.layout.projects_activity);
 	}
 	
     @Override

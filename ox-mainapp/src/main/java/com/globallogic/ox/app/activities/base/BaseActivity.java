@@ -32,7 +32,7 @@ public class BaseActivity extends RoboSherlockFragmentActivity{
 		setTitle(mTitleRes);
 		setContentView(mLayout);
 		getSupportActionBar().show();
-		getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_));
+//		getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.header_));
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayShowTitleEnabled(true);
 		getSupportActionBar().setDisplayUseLogoEnabled(false);

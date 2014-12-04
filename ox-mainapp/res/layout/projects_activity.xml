@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mi_linea_tarjeta_abono_fragment_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:overScrollMode="never"
+        android:requiresFadingEdge="none"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        tools:ignore="UselessParent">
+        
+		<LinearLayout
+            android:id="@+id/mi_linea_tarjeta_abono_fragment_container_pull_to_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/mi_linea_tarjeta_abono_fragment_pull_to_refresh_hint"
+                style="@style/pull_to_refresh_hint_style"
+                android:layout_weight="0"
+                android:text="@string/pull_to_refresh_footer_text"
+                android:visibility="gone" />
+            
+		    <LinearLayout
+		        android:id="@+id/view_Projects_List"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10sp"
+		        android:layout_marginRight="10sp"
+		        android:background="#FFFFFF"
+		        android:orientation="vertical">
+	    	</LinearLayout>
+		
+		</LinearLayout>
+	
+	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+	
+</FrameLayout>

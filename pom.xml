@@ -12,7 +12,7 @@
 		<module>ox-actionbarsherlock</module>
 		<module>ox-google-play-services_lib</module>
 		<module>ox-volley</module>
-		<module>ox-mainapp</module>
+		<module>ox-pulltorefresh</module>
 	</modules>
 
 	<properties>
