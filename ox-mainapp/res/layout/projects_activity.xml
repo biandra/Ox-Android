@@ -50,7 +50,7 @@
         android:layout_gravity="center"
         android:visibility="gone">
         
-              <ListView
+        <ListView
 	        android:id="@+id/listView_Projects"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"

@@ -62,27 +62,26 @@ public class GCMIntentService extends IntentService{
 
 	}
 
-	private Handler handler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			Bundle bundle = msg.getData();
-			String title = bundle.getString("title");
-			((BaseActivity) OxApp.getAppContext()).setNotifCount(1);
-		}
-	};
+//	private Handler handler = new Handler() {
+//		@Override
+//		public void handleMessage(Message msg) {
+//			Bundle bundle = msg.getData();
+//			String title = bundle.getString("title");
+//			((BaseActivity) OxApp.getAppContext()).setNotifCount(1);
+//		}
+//	};
 
 	private void mostrarNotification(String url, String title) 
 	{
-		if(((OxApp) OxApp.getAppContext()).isActivityVisible()){
-			//handler.sendEmptyMessage(0);
-			Message msg = new Message();
-			Bundle bundle = new Bundle();
-			bundle.putString("url", url);
-			bundle.putString("title", title); 
-			msg.setData(bundle);
-			handler.sendMessage(msg);
-		}
-		else{
+//		if(((OxApp) OxApp.getAppContext()).isActivityVisible()){
+//			Message msg = new Message();
+//			Bundle bundle = new Bundle();
+//			bundle.putString("url", url);
+//			bundle.putString("title", title); 
+//			msg.setData(bundle);
+//			handler.sendMessage(msg);
+//		}
+//		else{
 
 			NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE); 
 
@@ -101,7 +100,7 @@ public class GCMIntentService extends IntentService{
 			mBuilder.setContentIntent(contIntent);
 
 			mNotificationManager.notify(NOTIF_ALERTA_ID, mBuilder.build());
-		}
+//		}
 	}
 
 }

@@ -77,12 +77,6 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 			}
 		});
 		
-		List<Project> items = new ArrayList<Project>();
-		items.add(new Project());
-		items.add(new Project());
-		items.add(new Project());
-		listView.setAdapter(new ProjectAdapter(this, items ));
-		
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
@@ -100,14 +94,14 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 	}
 
 	@Override
-	public void onGetProjectsFinished() {
-		setViewProjets();
+	public void onGetProjectsFinished(List<Project> projects) {
+		setViewProjets(projects);
 	}
 
 	@Override
 	public void onGetProjectsError() {
 //		setViewError();
-		setViewProjets();
+		setViewProjets(null);
 	}
 
 	@Override
@@ -129,12 +123,18 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 		progressDialog.setVisibility(View.VISIBLE);
 	}
 	
-	private void setViewProjets() {
+	private void setViewProjets(List<Project> projects) {
 		pullToRefreshScroll.onRefreshComplete();
 		pullToRefreshScroll.setMode(Mode.DISABLED);
 		projectsList.setVisibility(View.VISIBLE);
 		progressDialog.setVisibility(View.GONE);
 		pullToRefreshHintView.setVisibility(View.GONE);
 		containerPullToRefresh.setVisibility(View.VISIBLE);
+		
+		List<Project> items = new ArrayList<Project>();
+		items.add(new Project());
+		items.add(new Project());
+		items.add(new Project());
+		listView.setAdapter(new ProjectAdapter(this, items ));
 	}
 }

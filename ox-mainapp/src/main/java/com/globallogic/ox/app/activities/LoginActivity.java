@@ -40,7 +40,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
   
 		model = new LoginActivityModel(this);
 		buttonLogin.setOnClickListener(login);
-		setNotifCount(2);
     }
     
     private View.OnClickListener login = new View.OnClickListener() {

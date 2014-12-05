@@ -43,8 +43,8 @@ public class ProjectsActivityModel {
 			}
 
 			@Override
-			public void onRequestFinished(List<Project> result) {
-				view.onGetProjectsFinished();
+			public void onRequestFinished(List<Project> projects) {
+				view.onGetProjectsFinished(projects);
 			}
 
 			@Override
