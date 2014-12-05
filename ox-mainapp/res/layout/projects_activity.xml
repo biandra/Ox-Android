@@ -34,20 +34,30 @@
                 android:text="@string/pull_to_refresh_footer_text"
                 android:visibility="gone" />
             
-		    <LinearLayout
-		        android:id="@+id/view_Projects_List"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:layout_marginLeft="10sp"
-		        android:layout_marginRight="10sp"
-		        android:background="#FFFFFF"
-		        android:orientation="vertical">
-	    	</LinearLayout>
+<!--             aca la imagen del error -->
 		
 		</LinearLayout>
-	
 	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 	
+  	<LinearLayout
+        android:id="@+id/view_Projects_List"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:visibility="gone">
+        
+              <ListView
+	        android:id="@+id/listView_Projects"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1" />    
+            
+   	</LinearLayout>
+    
     <RelativeLayout
         android:id="@+id/projects_request_loading"
         android:layout_width="match_parent"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight" >
+ 
+	<ViewFlipper
+        android:id="@+id/facturacion_fragment_reference_number_container"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:addStatesFromChildren="true" >
+
+       	<RelativeLayout
+            android:id="@+id/facturacion_fragment_reference_number_container_front"
+            android:background="@drawable/border_card"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp">
+
+        </RelativeLayout>
+
+       	<RelativeLayout
+            android:id="@+id/facturacion_fragment_reference_number_container_back"
+            android:background="@drawable/border_card_back"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp">
+            
+        </RelativeLayout>
+	</ViewFlipper>
+ 
+</RelativeLayout>

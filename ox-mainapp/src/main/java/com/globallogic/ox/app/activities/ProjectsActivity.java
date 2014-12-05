@@ -1,17 +1,23 @@
 package com.globallogic.ox.app.activities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import roboguice.inject.InjectView;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivity;
+import com.globallogic.ox.app.adapter.ProjectAdapter;
 import com.globallogic.ox.app.viewlistener.ProjectsActivityListener;
 import com.globallogic.ox.app.viewmodel.ProjectsActivityModel;
+import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ServerErrorInfo;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -38,6 +44,9 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 	
 	@InjectView(R.id.projects_container_pull_to_refresh)
 	private LinearLayout containerPullToRefresh;
+	
+	@InjectView(R.id.listView_Projects)
+	private ListView listView;
 	
 	public ProjectsActivity() {
 		super(R.string.app_name, R.layout.projects_activity);
@@ -67,12 +76,23 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 				}
 			}
 		});
-    }
+		
+		List<Project> items = new ArrayList<Project>();
+		items.add(new Project());
+		items.add(new Project());
+		items.add(new Project());
+		listView.setAdapter(new ProjectAdapter(this, items ));
+		
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-	@Override
-	public Activity getActivity() {
-		return this;
-	}
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
+				//TODO: redirect to activity
+				Project item = (Project) listView.getAdapter().getItem(position);
+            }
+			
+		});
+    }
 
 	@Override
 	public void onGetProjectsStarted() {
@@ -86,7 +106,8 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 
 	@Override
 	public void onGetProjectsError() {
-		setViewError();
+//		setViewError();
+		setViewProjets();
 	}
 
 	@Override

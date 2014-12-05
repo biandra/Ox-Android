@@ -1,7 +1,6 @@
 package com.globallogic.ox.app.activities;
 
 import roboguice.inject.InjectView;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -57,11 +56,6 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 			startActivity(projectsList);
 		}
 	};
-
-	@Override
-	public Activity getActivity() {
-		return this;
-	}
 
 	@Override
 	public void onGetLoginStarted() {
