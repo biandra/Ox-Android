@@ -100,8 +100,8 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 
 	@Override
 	public void onGetProjectsError() {
-//		setViewError();
-		setViewProjets(null);
+		setViewError();
+//		setViewProjets(null);
 	}
 
 	@Override
@@ -119,6 +119,7 @@ public class ProjectsActivity extends BaseActivity implements ProjectsActivityLi
 	}
 
 	private void setViewLoading() {
+		pullToRefreshScroll.setMode(Mode.DISABLED);
 		projectsList.setVisibility(View.GONE);
 		progressDialog.setVisibility(View.VISIBLE);
 	}

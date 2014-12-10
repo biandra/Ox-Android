@@ -50,6 +50,12 @@
 			<type>apklib</type>
 		</dependency>
 		<dependency>
+			<groupId>com.jeremyfeinstein.slidingmenu</groupId>
+			<artifactId>ox-slidemenu</artifactId>
+			<version>0.0.1</version>
+			<type>apklib</type>
+		</dependency>
+		<dependency>
 			<groupId>com.github.rtyley</groupId>
 			<artifactId>roboguice-sherlock</artifactId>
 			<version>1.4</version>

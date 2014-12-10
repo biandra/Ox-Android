@@ -13,6 +13,7 @@
 		<module>ox-google-play-services_lib</module>
 		<module>ox-volley</module>
 		<module>ox-pulltorefresh</module>
+		<module>ox-slidemenu</module>
 	</modules>
 
 	<properties>
