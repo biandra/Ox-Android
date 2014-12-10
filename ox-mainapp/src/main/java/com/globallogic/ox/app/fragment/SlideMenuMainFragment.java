@@ -5,11 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.globallogic.ox.app.activities.base.BaseActivity;
 import com.globallogic.ox.app.component.progressbarwheel.ProgressWheel;
 import com.globallogic.ox.app.viewlistener.SlideMenuListener;
+import com.globallogic.ox.app.viewmodel.SlideMenuModel;
 import com.globallogic.ox.R;
 
 import roboguice.fragment.RoboFragment;
@@ -18,10 +20,12 @@ import roboguice.inject.InjectView;
 //TODO: Recuperar informacion del usuario
 public class SlideMenuMainFragment extends RoboFragment implements SlideMenuListener {
 
-//	private SlideMenuModel model;
+	private SlideMenuModel model;
 	
 	@InjectView(R.id.menu_slide_progress_user)
 	private ProgressWheel progressBar;
+	@InjectView(R.id.menu_slide_logout)
+	private LinearLayout logout;
 	@InjectView(R.id.menu_slide_name_user)
 	private TextView userText;
 	
@@ -33,7 +37,15 @@ public class SlideMenuMainFragment extends RoboFragment implements SlideMenuList
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-//		model = new SlideMenuModel(this);
+		
+		logout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				model.logout();
+			}
+		});
+		
+		model = new SlideMenuModel(this);
 //		model.requestUser();
 	}
 	

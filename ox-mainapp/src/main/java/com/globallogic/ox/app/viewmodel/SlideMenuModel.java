@@ -13,4 +13,9 @@ public class SlideMenuModel {
 		RoboguiceUtils.inject(this);
 		this.view = view;
 	}
+
+	public void logout() {
+		// TODO Auto-generated method stub
+		
+	}
 }
