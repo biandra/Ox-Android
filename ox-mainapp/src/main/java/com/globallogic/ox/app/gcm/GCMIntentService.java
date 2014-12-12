@@ -16,7 +16,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.globallogic.ox.app.OxApp;
 import com.globallogic.ox.app.activities.LoginActivity;
-import com.globallogic.ox.app.activities.base.BaseActivity;
+import com.globallogic.ox.app.activities.base.BaseActivitySlideMenu;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GCMIntentService extends IntentService{

@@ -5,51 +5,51 @@ import java.util.List;
 import com.globallogic.ox.app.services.ServiceListener;
 import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
-import com.globallogic.ox.app.viewlistener.ProjectsActivityListener;
+import com.globallogic.ox.app.viewlistener.DashboardActivityListener;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ServerErrorInfo;
 import com.globallogic.ox.exceptions.ParseError;
 import com.google.inject.Inject;
 
-public class ProjectsActivityModel {
+public class DashboardActivityModel {
 	
 	@Inject
 	private ServicesInterface service;
 	
-	private ProjectsActivityListener view;
+	private DashboardActivityListener view;
 
-	public ProjectsActivityModel(ProjectsActivityListener view) {
+	public DashboardActivityModel(DashboardActivityListener view) {
 		super();
 		RoboguiceUtils.inject(this);
 		this.view = view;
 	}
 
-	public void getProjects() {
+	public void getPipelines() {
 		service.getProject(new ServiceListener<List<Project>>(){
 
 			@Override
 			public void onRequestStarted() {
-				view.onGetProjectsStarted();
+				view.onGetDashboardStarted();
 			}
 
 			@Override
 			public void onConnectionError() {
-				view.onGetProjectsError();
+				view.onGetDashboardError();
 			}
 
 			@Override
 			public void onSessionError() {
-				view.onGetProjectsError();
+				view.onGetDashboardError();
 			}
 
 			@Override
-			public void onRequestFinished(List<Project> projects) {
-				view.onGetProjectsFinished(projects);
+			public void onRequestFinished(List<Project> pipelines) {
+				view.onGetDashboardFinished(pipelines);
 			}
 
 			@Override
 			public void onParseError(ParseError error) {
-				view.onGetProjectsError();
+				view.onGetDashboardError();
 			}
 
 			@Override

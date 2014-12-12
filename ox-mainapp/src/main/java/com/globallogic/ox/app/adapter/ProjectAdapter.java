@@ -73,10 +73,10 @@ public class ProjectAdapter extends BaseAdapter{
 	    	// Create a new view into the list.
 //	        convertView = mLayoutInflater.inflate(mLayout, null);
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.list_project, parent, false);
+            convertView = inflater.inflate(R.layout.pipeline, parent, false);
 
 	        viewHolder = new ViewHolder();
-	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.facturacion_fragment_reference_number_container));
+	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 //	        viewHolder.v2FieldName = (TextView) convertView.findViewById(R.id.tvLongName);
 //	        viewHolder.button01 = (ImageButton) convertView.findViewById(R.id.imageButton1);    
@@ -88,7 +88,7 @@ public class ProjectAdapter extends BaseAdapter{
 	    }
 
 
-	    flipperTemp = (ViewFlipper) convertView.findViewById(R.id.facturacion_fragment_reference_number_container);
+	    flipperTemp = (ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline);
 	    flipperTemp.setOnClickListener(new OnClickListener() {
 
 			@Override

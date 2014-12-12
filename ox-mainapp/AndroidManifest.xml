@@ -18,7 +18,7 @@
         <activity android:name=".app.activities.LoginActivity"
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppThemeSecond">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,7 +28,7 @@
         <activity
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"
-            android:name=".app.activities.ProjectsActivity"
+            android:name=".app.activities.PipelinesActivity"
             android:theme="@style/AppThemeSecond">
         </activity>
         

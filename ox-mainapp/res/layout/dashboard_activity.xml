@@ -7,7 +7,7 @@
     
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/projects_scrollview"
+        android:id="@+id/dashboard_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@null"
@@ -21,14 +21,14 @@
         tools:ignore="UselessParent">
         
 		<LinearLayout
-            android:id="@+id/projects_container_pull_to_refresh"
+            android:id="@+id/dashboard_container_pull_to_refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone" >
 
             <TextView
-                android:id="@+id/projects_pull_to_refresh_hint"
+                android:id="@+id/dashboard_pull_to_refresh_hint"
                 style="@style/pull_to_refresh_hint_style"
                 android:layout_weight="0"
                 android:text="@string/pull_to_refresh_footer_text"
@@ -40,7 +40,7 @@
 	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 	
   	<LinearLayout
-        android:id="@+id/view_Projects_List"
+        android:id="@+id/view_Dashboard_List"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10sp"
@@ -51,7 +51,7 @@
         android:visibility="gone">
         
         <ListView
-	        android:id="@+id/listView_Projects"
+	        android:id="@+id/listView_Dashboard"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1" />    
@@ -59,7 +59,7 @@
    	</LinearLayout>
     
     <RelativeLayout
-        android:id="@+id/projects_request_loading"
+        android:id="@+id/dashboard_request_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/shadow"

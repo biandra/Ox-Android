@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.globallogic.ox.R;
-import com.globallogic.ox.app.activities.base.BaseActivity;
+import com.globallogic.ox.app.activities.base.BaseActivitySlide;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.app.viewmodel.LoginActivityModel;
 import com.globallogic.ox.domain.Account;
 import com.globallogic.ox.domain.ServerErrorInfo;
 
-public class LoginActivity extends BaseActivity implements LoginActivityListener{
+public class LoginActivity extends BaseActivitySlide implements LoginActivityListener{
 
 	private LoginActivityModel model;
 
@@ -51,8 +51,8 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 			model.getToken(account);
 			
 			//TODO:remove luego de implementar login
-			Intent projectsList = new Intent(LoginActivity.this, ProjectsActivity.class);
-			startActivity(projectsList);
+			Intent pipelines = new Intent(LoginActivity.this, DashboardActivity.class);
+			startActivity(pipelines);
 		}
 	};
 
@@ -64,8 +64,8 @@ public class LoginActivity extends BaseActivity implements LoginActivityListener
 
 	@Override
 	public void onGetLoginFinished() {
-		Intent projectsList = new Intent(LoginActivity.this, ProjectsActivity.class);
-		startActivity(projectsList);
+		Intent pipelines = new Intent(LoginActivity.this, DashboardActivity.class);
+		startActivity(pipelines);
 	}
 
 	@Override

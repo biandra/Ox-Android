@@ -4,7 +4,7 @@
     android:layout_height="?android:attr/listPreferredItemHeight" >
  
 	<ViewFlipper
-        android:id="@+id/facturacion_fragment_reference_number_container"
+        android:id="@+id/viewFlipper_pipeline"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -15,7 +15,7 @@
         android:addStatesFromChildren="true" >
 
        	<RelativeLayout
-            android:id="@+id/facturacion_fragment_reference_number_container_front"
+            android:id="@+id/viewFlipper_pipeline_front"
             android:background="@drawable/border_card"
             android:layout_width="fill_parent"
             android:layout_height="300dp">
@@ -23,7 +23,7 @@
         </RelativeLayout>
 
        	<RelativeLayout
-            android:id="@+id/facturacion_fragment_reference_number_container_back"
+            android:id="@+id/viewFlipper_pipeline_back"
             android:background="@drawable/border_card_back"
             android:layout_width="fill_parent"
             android:layout_height="300dp">

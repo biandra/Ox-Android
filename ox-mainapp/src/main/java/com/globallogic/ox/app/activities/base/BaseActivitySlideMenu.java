@@ -3,44 +3,31 @@ package com.globallogic.ox.app.activities.base;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
-import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.OxApp;
 import com.globallogic.ox.app.fragment.SlideMenuMainFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 
-public class BaseActivity extends RoboSherlockFragmentActivity{
+public class BaseActivitySlideMenu extends BaseActivitySlide{
 	
-	private int mTitleRes;
-	private int mLayout;
+	protected int mTitleRes;
+	protected int mLayout;
 	private SlidingMenu slideMenu;
 	private Fragment mFrag;
 //	private static Button notifCount;
 //	private static int mNotifCount = 0; 
 	
-	public BaseActivity(int titleRes, int layoutId) {
-		mTitleRes = titleRes;
-		mLayout = layoutId;
+	public BaseActivitySlideMenu(int titleRes, int layoutId) {
+		super(titleRes, layoutId);
 	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		requestWindowFeature(Window.FEATURE_ACTION_BAR);
-		getSupportActionBar().hide();
-		setTitle(mTitleRes);
-		setContentView(mLayout);
-		getSupportActionBar().show();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setDisplayShowTitleEnabled(true);
-		getSupportActionBar().setDisplayUseLogoEnabled(false);
-		getSupportActionBar().setIcon(android.R.color.transparent);
-		
 		createSlideMenu();
 	}
 	
@@ -54,7 +41,6 @@ public class BaseActivity extends RoboSherlockFragmentActivity{
 		return super.onOptionsItemSelected(item);
 	}
 
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.main, menu);
@@ -67,8 +53,7 @@ public class BaseActivity extends RoboSherlockFragmentActivity{
 		return true;
 	}
 
-	public void createSlideMenu() {
-		// customize the SlidingMenu
+	private void createSlideMenu() {
 		slideMenu = new SlidingMenu(this);
 		slideMenu.setShadowWidthRes(R.dimen.shadow_width);
 		slideMenu.setShadowDrawable(R.drawable.shadow);

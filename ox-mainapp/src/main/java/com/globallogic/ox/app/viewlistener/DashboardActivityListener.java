@@ -5,10 +5,10 @@ import java.util.List;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ServerErrorInfo;
 
-public interface ProjectsActivityListener {
+public interface DashboardActivityListener {
 
-	void onGetProjectsStarted();
-	void onGetProjectsFinished(List<Project> projects);
-	void onGetProjectsError();
+	void onGetDashboardStarted();
+	void onGetDashboardFinished(List<Project> pipelines);
+	void onGetDashboardError();
 	void onServerError(ServerErrorInfo errorInfo);;
 }
