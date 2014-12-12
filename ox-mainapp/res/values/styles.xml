@@ -19,6 +19,8 @@
         <item name="android:windowBackground">@color/app_background</item>
         <item name="actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
         <item name="android:actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
+        <item name="homeAsUpIndicator">@drawable/action_bar_menu_custom</item>
+        <item name="android:homeAsUpIndicator">@drawable/action_bar_menu_custom</item>
         <item name="actionBarItemBackground">@drawable/list_item_selected_grey</item>
         <item name="android:actionBarItemBackground">@drawable/list_item_selected_grey</item>
     </style>    
@@ -30,8 +32,8 @@
         <item name="android:windowBackground">@color/app_background</item>
         <item name="actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
         <item name="android:actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
-        <item name="homeAsUpIndicator">@drawable/action_bar_menu_custom</item>
-        <item name="android:homeAsUpIndicator">@drawable/action_bar_menu_custom</item>
+        <item name="homeAsUpIndicator">@drawable/action_bar_back_custom</item>
+        <item name="android:homeAsUpIndicator">@drawable/action_bar_back_custom</item>
         <item name="actionBarItemBackground">@drawable/list_item_selected_grey</item>
         <item name="android:actionBarItemBackground">@drawable/list_item_selected_grey</item>
     </style>

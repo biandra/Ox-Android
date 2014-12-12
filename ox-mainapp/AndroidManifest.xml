@@ -18,7 +18,7 @@
         <activity android:name=".app.activities.LoginActivity"
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
+            android:theme="@style/Theme.Sherlock.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -28,7 +28,14 @@
         <activity
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"
-            android:name=".app.activities.PipelinesActivity"
+            android:name=".app.activities.DashboardActivity"
+            android:theme="@style/AppTheme">
+        </activity>
+        
+        <activity
+            android:configChanges="orientation|keyboard"
+            android:screenOrientation="portrait"
+            android:name=".app.activities.PipelineActivity"
             android:theme="@style/AppThemeSecond">
         </activity>
         

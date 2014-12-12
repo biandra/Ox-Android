@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.globallogic.ox.app.activities.base.BaseActivitySlideMenu;
+import com.globallogic.ox.app.activities.base.BaseActivitySlideMenuActionBarMenu;
 import com.globallogic.ox.app.component.progressbarwheel.ProgressWheel;
 import com.globallogic.ox.app.viewlistener.SlideMenuListener;
 import com.globallogic.ox.app.viewmodel.SlideMenuModel;
@@ -57,7 +57,7 @@ public class SlideMenuMainFragment extends RoboFragment implements SlideMenuList
 	
 	@Override
 	public void closeSideMenu() {
-		BaseActivitySlideMenu act = (BaseActivitySlideMenu) getActivity();
+		BaseActivitySlideMenuActionBarMenu act = (BaseActivitySlideMenuActionBarMenu) getActivity();
 		act.closeSideMenu();
 	}
 

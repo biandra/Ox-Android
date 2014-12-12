@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Ox</string>
+    <string name="app_dashboard"></string>
     <string name="name_username">"Usuario"</string>
     <string name="pass">"Clave"</string>
     <string name="pull_to_refresh_footer_text">Desliz\u00e1 hacia abajo para cargar los datos correctamente.</string>

@@ -1,5 +1,6 @@
 package com.globallogic.ox.app.activities;
 
+import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.globallogic.ox.R;
-import com.globallogic.ox.app.activities.base.BaseActivitySlide;
 import com.globallogic.ox.app.viewlistener.LoginActivityListener;
 import com.globallogic.ox.app.viewmodel.LoginActivityModel;
 import com.globallogic.ox.domain.Account;
 import com.globallogic.ox.domain.ServerErrorInfo;
 
-public class LoginActivity extends BaseActivitySlide implements LoginActivityListener{
+public class LoginActivity extends RoboActivity implements LoginActivityListener{
 
 	private LoginActivityModel model;
 
@@ -30,14 +30,11 @@ public class LoginActivity extends BaseActivitySlide implements LoginActivityLis
 	@InjectView(R.id.editText_Password)
 	private EditText editTextPassword;
 	
-	public LoginActivity() {
-		super(R.string.app_name, R.layout.login_activity);
-	}
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-  
+        setContentView(R.layout.login_activity);
+        
 		model = new LoginActivityModel(this);
 		buttonLogin.setOnClickListener(login);
     }

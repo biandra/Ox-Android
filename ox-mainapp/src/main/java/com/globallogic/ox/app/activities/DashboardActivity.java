@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import roboguice.inject.InjectView;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.globallogic.ox.R;
-import com.globallogic.ox.app.activities.base.BaseActivitySlideMenu;
+import com.globallogic.ox.app.activities.base.BaseActivitySlideMenuActionBarMenu;
 import com.globallogic.ox.app.adapter.ProjectAdapter;
 import com.globallogic.ox.app.viewlistener.DashboardActivityListener;
 import com.globallogic.ox.app.viewmodel.DashboardActivityModel;
@@ -26,7 +27,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.State;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 
-public class DashboardActivity extends BaseActivitySlideMenu implements DashboardActivityListener{
+public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implements DashboardActivityListener{
 
 	private DashboardActivityModel model;
 	
@@ -49,7 +50,7 @@ public class DashboardActivity extends BaseActivitySlideMenu implements Dashboar
 	private ListView listView;
 	
 	public DashboardActivity() {
-		super(R.string.app_name, R.layout.dashboard_activity);
+		super(R.string.app_dashboard, R.layout.dashboard_activity);
 	}
 	
     @Override
