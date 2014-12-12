@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import roboguice.inject.InjectView;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -78,15 +76,6 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 			}
 		});
 		
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
-				//TODO: redirect to activity
-				Project item = (Project) listView.getAdapter().getItem(position);
-            }
-			
-		});
     }
 
 	@Override
@@ -134,9 +123,15 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		containerPullToRefresh.setVisibility(View.VISIBLE);
 		
 		List<Project> items = new ArrayList<Project>();
-		items.add(new Project());
-		items.add(new Project());
-		items.add(new Project());
+		Project p = new Project();
+		p.setId(1);
+		items.add(p);
+		Project p1 = new Project();
+		p1.setId(2);
+		items.add(p1);
+		Project p2 = new Project();
+		p2.setId(3);
+		items.add(p2);
 		listView.setAdapter(new ProjectAdapter(this, items ));
 	}
 }
