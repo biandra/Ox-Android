@@ -11,7 +11,15 @@ public class Project implements Serializable{
 	
 	private int id;
 	private String name;
+	private String description;
+	private String stages;
 	
+	public String getStages() {
+		return stages;
+	}
+	public void setStages(String stages) {
+		this.stages = stages;
+	}
 	public int getId() {
 		return id;
 	}
@@ -23,6 +31,12 @@ public class Project implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

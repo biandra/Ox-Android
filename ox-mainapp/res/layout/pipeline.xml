@@ -34,7 +34,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_gravity="center"
 		        android:layout_marginTop="20sp"
-		        android:background="@drawable/bg_button_login"/>
+		        android:background="@drawable/bg_button_showpipeline"/>
        	    
         </RelativeLayout>
 	</ViewFlipper>

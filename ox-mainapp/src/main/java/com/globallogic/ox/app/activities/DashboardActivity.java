@@ -13,7 +13,7 @@ import android.widget.ScrollView;
 
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivitySlideMenuActionBarMenu;
-import com.globallogic.ox.app.adapter.ProjectAdapter;
+import com.globallogic.ox.app.adapter.PipelineAdapter;
 import com.globallogic.ox.app.viewlistener.DashboardActivityListener;
 import com.globallogic.ox.app.viewmodel.DashboardActivityModel;
 import com.globallogic.ox.domain.Project;
@@ -122,16 +122,6 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		pullToRefreshHintView.setVisibility(View.GONE);
 		containerPullToRefresh.setVisibility(View.VISIBLE);
 		
-		List<Project> items = new ArrayList<Project>();
-		Project p = new Project();
-		p.setId(1);
-		items.add(p);
-		Project p1 = new Project();
-		p1.setId(2);
-		items.add(p1);
-		Project p2 = new Project();
-		p2.setId(3);
-		items.add(p2);
-		listView.setAdapter(new ProjectAdapter(this, items ));
+		listView.setAdapter(new PipelineAdapter(this, pipelines));
 	}
 }

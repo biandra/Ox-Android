@@ -42,6 +42,7 @@ public class SlideMenuMainFragment extends RoboFragment implements SlideMenuList
 			@Override
 			public void onClick(View v) {
 				model.logout();
+				getActivity().finish();
 			}
 		});
 		

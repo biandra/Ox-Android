@@ -20,12 +20,12 @@ import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ViewHolder;
 
 
-public class ProjectAdapter extends BaseAdapter{
+public class PipelineAdapter extends BaseAdapter{
 
 	private Context context;
     private List<Project> items;
 	
-    public ProjectAdapter(Context context, List<Project> items) {
+    public PipelineAdapter(Context context, List<Project> items) {
         this.context = context;
         this.items = items;
     }
