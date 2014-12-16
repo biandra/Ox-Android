@@ -90,13 +90,30 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 
 	@Override
 	public void onGetDashboardError() {
-		setViewError();
-//		setViewProjets(null);
+//		setViewError();
+		
+		List<Project> pipelines = new ArrayList<Project>();
+		Project p = new Project();
+		p.setId(1);
+		Project p2 = new Project();
+		p.setId(2);
+		pipelines.add(p);
+		pipelines.add(p2);
+		setViewProjets(pipelines);
 	}
 
 	@Override
 	public void onServerError(ServerErrorInfo errorInfo) {
-		setViewError();
+//		setViewError();
+		
+		List<Project> pipelines = new ArrayList<Project>();
+		Project p = new Project();
+		p.setId(1);
+		Project p2 = new Project();
+		p.setId(2);
+		pipelines.add(p);
+		pipelines.add(p2);
+		setViewProjets(pipelines);
 	}
 	
 	private void setViewError() {
