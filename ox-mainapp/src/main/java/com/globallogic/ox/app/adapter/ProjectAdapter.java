@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.globallogic.ox.R;
@@ -71,8 +72,9 @@ public class ProjectAdapter extends BaseAdapter{
 	public View getView(final int position, View convertView, ViewGroup parent) {
 
 	    final ViewFlipper flipperTemp;
-
+	    final Project item = (Project) getItem(position);
 	    ViewHolderPipeline viewHolder;
+	    
 		if (convertView == null) {
 	    	// Create a new view into the list.
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -82,6 +84,11 @@ public class ProjectAdapter extends BaseAdapter{
 	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	        viewHolder.setButtonShow((Button) convertView.findViewById(R.id.button_pipeline_show));
+	        viewHolder.setName((TextView) convertView.findViewById(R.id.textView_pipeline_name));
+	        viewHolder.getName().setText(item.getName());
+	        viewHolder.setNumber((TextView) convertView.findViewById(R.id.textView_pipeline_number));
+	        //TODO: sacar hardcode
+	        viewHolder.getNumber().setText("#0");
 	        
 	        convertView.setTag(viewHolder);
 	    } else {
@@ -102,9 +109,8 @@ public class ProjectAdapter extends BaseAdapter{
 	    viewHolder.getButtonShow().setOnClickListener(new OnClickListener() {
 	        public void onClick(View v) {
 //	            flipperTemp.showNext();
-	        	Project item = (Project) getItem(position);
 				Intent intent = new Intent(context, PipelineActivity.class);
-				intent.putExtra("idMotel", item.getId());
+				intent.putExtra("idProject", item.getId());
 				context.startActivity(intent);
 	        }
 	    });

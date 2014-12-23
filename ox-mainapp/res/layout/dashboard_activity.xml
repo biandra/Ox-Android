@@ -52,8 +52,6 @@
         
         <ListView
 	        android:id="@+id/listView_Dashboard"
-	        android:scrollX="0px"
- android:scrollY="0px"
 	        android:layout_width="match_parent"
 	        android:layout_height="match_parent"
 	        android:listSelector="@android:color/transparent" 
