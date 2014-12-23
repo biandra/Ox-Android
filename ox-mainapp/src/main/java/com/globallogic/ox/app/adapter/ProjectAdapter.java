@@ -10,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
 import com.globallogic.ox.R;
@@ -17,15 +18,15 @@ import com.globallogic.ox.app.activities.PipelineActivity;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
 import com.globallogic.ox.domain.Project;
-import com.globallogic.ox.domain.ViewHolder;
+import com.globallogic.ox.domain.ViewHolderPipeline;
 
 
-public class PipelineAdapter extends BaseAdapter{
+public class ProjectAdapter extends BaseAdapter{
 
 	private Context context;
     private List<Project> items;
 	
-    public PipelineAdapter(Context context, List<Project> items) {
+    public ProjectAdapter(Context context, List<Project> items) {
         this.context = context;
         this.items = items;
     }
@@ -71,20 +72,20 @@ public class PipelineAdapter extends BaseAdapter{
 
 	    final ViewFlipper flipperTemp;
 
-	    ViewHolder viewHolder;
+	    ViewHolderPipeline viewHolder;
 		if (convertView == null) {
 	    	// Create a new view into the list.
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.pipeline, parent, false);
-
-	        viewHolder = new ViewHolder();
+            
+	        viewHolder = new ViewHolderPipeline();
 	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	        viewHolder.setButtonShow((Button) convertView.findViewById(R.id.button_pipeline_show));
 	        
 	        convertView.setTag(viewHolder);
 	    } else {
-	        viewHolder = (ViewHolder) convertView.getTag();
+	        viewHolder = (ViewHolderPipeline) convertView.getTag();
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	    }
 
@@ -109,7 +110,7 @@ public class PipelineAdapter extends BaseAdapter{
 	    });
 	    
 	    //TODO: cambiar este hardcodeo
-	    convertView.getLayoutParams().height = 100;
+	    convertView.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
 
 	    return convertView;
 	}

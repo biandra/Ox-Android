@@ -3,7 +3,7 @@ package com.globallogic.ox.domain;
 import android.widget.Button;
 import android.widget.ViewFlipper;
 
-public class ViewHolder {
+public class ViewHolderPipeline {
 	private ViewFlipper flipper;
 	private Button buttonShow;
 
