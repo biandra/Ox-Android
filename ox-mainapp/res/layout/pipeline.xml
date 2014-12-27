@@ -15,7 +15,7 @@
         android:paddingRight="10dp"
         android:addStatesFromChildren="true" >
 
-       	<LinearLayout
+       	<RelativeLayout
             android:id="@+id/viewFlipper_pipeline_front"
             android:background="@drawable/border_card"
             android:layout_width="fill_parent"
@@ -26,7 +26,9 @@
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
         		android:textColor="@color/white"
-        		android:layout_gravity="left|center_vertical">
+        		android:padding="5dp"
+	       		android:layout_centerVertical="true"
+	       		android:layout_alignParentLeft="true">
        	    </TextView>
        	    
             <TextView
@@ -34,11 +36,13 @@
         		android:layout_width="wrap_content"
         		android:layout_height="wrap_content"
         		android:textColor="@color/white"
+        		android:padding="5dp"
         		android:gravity="right|bottom"
-        		android:layout_gravity="right|end">
+        		android:layout_alignParentBottom="true"
+        		android:layout_alignParentRight="true">
        	    </TextView>
 
-        </LinearLayout>
+        </RelativeLayout>
 
        	<LinearLayout
             android:id="@+id/viewFlipper_pipeline_back"
