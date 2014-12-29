@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFFFFF"
+    android:background="#0b3f41"
     android:gravity="center"
     tools:context=".app.activities.LoginActivity" >
 
@@ -13,7 +13,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
-        android:orientation="vertical" >
+        android:orientation="vertical" 
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageViewLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50sp"
+            android:src="@drawable/login_logo" />
 
         <EditText
             android:id="@+id/editText_Email"
@@ -23,8 +31,11 @@
 		    android:lines="1"
 		    android:maxLines="1"
 		    android:scrollHorizontally="true"
-            android:background="#eeeeee"
+            android:background="@drawable/rounded_edittext"
+            android:padding="8dp"
             android:hint="@string/name_username"
+            android:textColorHint="#0b3f41"
+            android:textColor="#0b3f41"
             android:layout_marginBottom="20sp" >
         </EditText>
 
@@ -36,8 +47,11 @@
 		    android:lines="1"
 		    android:maxLines="1"
 		    android:scrollHorizontally="true"
-            android:background="#eeeeee"
+            android:background="@drawable/rounded_edittext"
+            android:padding="8dp"
             android:hint="@string/pass"
+            android:textColor="#0b3f41"
+            android:textColorHint="#0b3f41"
             android:layout_marginBottom="20sp"
             android:password="true" >
         </EditText>
@@ -47,6 +61,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/white"
             android:background="@drawable/bg_button_login" />
     </LinearLayout>
 

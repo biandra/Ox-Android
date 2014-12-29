@@ -3,10 +3,11 @@
 
     <string name="app_name">Ox</string>
     <string name="app_dashboard"></string>
-    <string name="name_username">"Usuario"</string>
-    <string name="pass">"Clave"</string>
+    <string name="name_username">"usuario"</string>
+    <string name="pass">"contraseña"</string>
     <string name="pull_to_refresh_footer_text">Desliz\u00e1 hacia abajo para cargar los datos correctamente.</string>
     <string name="loading">Cargando&#8230;</string>
+    <string name="login">Ingresar</string>
     
     <string name="menu_slide_my_profile_item">Mi Perfil</string>
     <string name="menu_slide_logout_item">Cerrar Sesi\u00F3n</string>

@@ -1,11 +1,11 @@
 package com.globallogic.ox.app.adapter;
 
-import com.globallogic.ox.app.fragment.PipelineFragment;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
+
+import com.globallogic.ox.app.fragment.PipelineFragment;
 
 public class PipelineFragmentAdapter extends FragmentPagerAdapter{
 
@@ -22,6 +22,11 @@ public class PipelineFragmentAdapter extends FragmentPagerAdapter{
         return PipelineFragment.newInstance(CONTENT[position % CONTENT.length]);
     }
 
+    @Override
+    public int getItemPosition(Object object){
+        return POSITION_NONE;
+    }
+    
     @Override
     public int getCount() {
         return mCount;

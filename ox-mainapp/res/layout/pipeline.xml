@@ -63,7 +63,7 @@
 			        android:id="@+id/button_pipeline_show"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			        android:background="@drawable/bg_button_showpipeline"/>
+			        android:background="@drawable/bg_button_detailspipeline"/>
 
         </LinearLayout>
         

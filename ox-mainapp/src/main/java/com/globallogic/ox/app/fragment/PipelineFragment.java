@@ -70,8 +70,6 @@ public class PipelineFragment extends Fragment {
         
         TableAdapter tableAdapter = new TableAdapter(getActivity(), table);
         lv.setAdapter(tableAdapter); 
-        
-        //TODO: position del scroll
         lv.setOnScrollListener(new OnScrollListener() {
 			
 			@Override

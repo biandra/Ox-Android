@@ -18,6 +18,7 @@ import com.globallogic.ox.app.viewlistener.DashboardActivityListener;
 import com.globallogic.ox.app.viewmodel.DashboardActivityModel;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ServerErrorInfo;
+import com.globallogic.ox.domain.Statics;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnPullEventListener;
@@ -95,10 +96,8 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		List<Project> pipelines = new ArrayList<Project>();
 		Project p = new Project();
 		p.setId(1);
-		Project p2 = new Project();
-		p.setId(2);
+		p.setStatics(new Statics());
 		pipelines.add(p);
-		pipelines.add(p2);
 		setViewProjets(pipelines);
 	}
 
@@ -109,10 +108,8 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		List<Project> pipelines = new ArrayList<Project>();
 		Project p = new Project();
 		p.setId(1);
-		Project p2 = new Project();
-		p.setId(2);
+		p.setStatics(new Statics());
 		pipelines.add(p);
-		pipelines.add(p2);
 		setViewProjets(pipelines);
 	}
 	
