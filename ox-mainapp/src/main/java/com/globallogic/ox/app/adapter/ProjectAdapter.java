@@ -87,8 +87,7 @@ public class ProjectAdapter extends BaseAdapter{
 	        viewHolder.setName((TextView) convertView.findViewById(R.id.textView_pipeline_name));
 	        viewHolder.getName().setText(item.getName());
 	        viewHolder.setNumber((TextView) convertView.findViewById(R.id.textView_pipeline_number));
-	        //TODO: sacar hardcode
-	        viewHolder.getNumber().setText("#0");
+	        viewHolder.getNumber().setText(item.getStatics().getNumber());
 	        
 	        convertView.setTag(viewHolder);
 	    } else {

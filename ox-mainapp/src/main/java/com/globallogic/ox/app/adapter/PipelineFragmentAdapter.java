@@ -1,9 +1,11 @@
 package com.globallogic.ox.app.adapter;
 
 import com.globallogic.ox.app.fragment.PipelineFragment;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 public class PipelineFragmentAdapter extends FragmentPagerAdapter{
 
@@ -29,6 +31,11 @@ public class PipelineFragmentAdapter extends FragmentPagerAdapter{
     public CharSequence getPageTitle(int position) {
       return PipelineFragmentAdapter.CONTENT[position % CONTENT.length];
     }
+
+    //TODO
+	public void fragmentBecameVisible() {
+		Log.i("a", "simula onResume");
+	}
 
 
 }
