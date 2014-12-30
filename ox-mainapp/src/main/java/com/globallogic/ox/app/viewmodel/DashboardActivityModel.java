@@ -25,7 +25,7 @@ public class DashboardActivityModel {
 	}
 
 	public void getPipelines() {
-		service.getProject(new ServiceListener<List<Project>>(){
+		service.getProjects(new ServiceListener<List<Project>>(){
 
 			@Override
 			public void onRequestStarted() {

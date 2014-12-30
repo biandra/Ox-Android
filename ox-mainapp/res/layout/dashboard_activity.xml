@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#efefef"
-    android:orientation="vertical"
-    tools:context=".app.activities.DashboardActivity" >
+    android:orientation="vertical">
     
     <com.handmark.pulltorefresh.library.PullToRefreshScrollView
         xmlns:ptr="http://schemas.android.com/apk/res-auto"
@@ -36,9 +35,27 @@
                 android:text="@string/pull_to_refresh_footer_text"
                 android:visibility="gone" />
             
-<!--             aca la imagen del error -->
+            <LinearLayout
+		       android:id="@+id/view_Dashboard_Error"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_gravity="center"
+		       android:background="@drawable/border_card"
+		       android:visibility="gone" >
 		
+		       <TextView
+			        android:id="@+id/profile_address_title"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center"
+			        android:text="@string/error_service"
+			        android:textColor="@color/white"
+			        android:textSize="17sp"/>
+		
+		   </LinearLayout>
+		   
 		</LinearLayout>
+		
 	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
 	
   	<LinearLayout

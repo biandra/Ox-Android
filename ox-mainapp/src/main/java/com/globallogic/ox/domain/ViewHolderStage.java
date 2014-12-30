@@ -5,14 +5,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ViewFlipper;
 
-public class ViewHolderJob extends View{
+public class ViewHolderStage extends View{
 	
-	public ViewHolderJob(Context context) {
+	public ViewHolderStage(Context context) {
 		super(context);
 	}
 
 	private ViewFlipper flipper;
-	private Button buttonShow;
+	private Button buttonRun;
 
 	public ViewFlipper getFlipper() {
 		return flipper;
@@ -22,11 +22,11 @@ public class ViewHolderJob extends View{
 		this.flipper = flipper;
 	}
 
-	public Button getButtonShow() {
-		return buttonShow;
+	public Button getButtonRun() {
+		return buttonRun;
 	}
 
-	public void setButtonShow(Button buttonShow) {
-		this.buttonShow = buttonShow;
+	public void setButtonRun(Button buttonRun) {
+		this.buttonRun = buttonRun;
 	}
 }

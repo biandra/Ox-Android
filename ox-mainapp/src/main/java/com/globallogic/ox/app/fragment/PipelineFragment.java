@@ -15,7 +15,7 @@ import android.widget.ListView;
 
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.adapter.TableAdapter;
-import com.globallogic.ox.domain.Job;
+import com.globallogic.ox.domain.Stage;
 import com.globallogic.ox.domain.TableCell;
 import com.globallogic.ox.domain.TableRow;
 
@@ -60,9 +60,9 @@ public class PipelineFragment extends Fragment {
         
         TableCell[] cells = new TableCell[2];
         for (int i = 0; i < cells.length; i++) {
-        	Job job = new Job();
-        	job.setId(i);
-        	cells[i] = new TableCell(job, 100, 100);
+        	Stage stage = new Stage();
+        	stage.setId(i);
+        	cells[i] = new TableCell(stage, 100, 100);
         }
         
         for (int i = 0; i < 5; i++)

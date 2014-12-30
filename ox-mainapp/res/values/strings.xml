@@ -8,6 +8,7 @@
     <string name="pull_to_refresh_footer_text">Desliz\u00e1 hacia abajo para cargar los datos correctamente.</string>
     <string name="loading">Cargando&#8230;</string>
     <string name="login">Ingresar</string>
+    <string name="error_service">"Error"</string>
     
     <string name="menu_slide_my_profile_item">Mi Perfil</string>
     <string name="menu_slide_logout_item">Cerrar Sesi\u00F3n</string>

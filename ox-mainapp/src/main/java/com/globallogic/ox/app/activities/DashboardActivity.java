@@ -33,6 +33,9 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 	@InjectView(R.id.view_Dashboard_List)
 	private View pipelinesList;
 	
+	@InjectView(R.id.view_Dashboard_Error)
+	private View errorView;
+	
 	@InjectView(R.id.dashboard_request_loading)
 	private RelativeLayout progressDialog;
 	
@@ -119,6 +122,7 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		pipelinesList.setVisibility(View.GONE);
 		progressDialog.setVisibility(View.GONE);
 		pullToRefreshHintView.setVisibility(View.VISIBLE);
+		errorView.setVisibility(View.VISIBLE);
 		containerPullToRefresh.setVisibility(View.VISIBLE);
 	}
 
@@ -126,6 +130,7 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		pullToRefreshScroll.setMode(Mode.DISABLED);
 		pipelinesList.setVisibility(View.GONE);
 		progressDialog.setVisibility(View.VISIBLE);
+		errorView.setVisibility(View.GONE);
 	}
 	
 	private void setViewProjets(List<Project> pipelines) {
@@ -134,6 +139,7 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		pipelinesList.setVisibility(View.VISIBLE);
 		progressDialog.setVisibility(View.GONE);
 		pullToRefreshHintView.setVisibility(View.GONE);
+		errorView.setVisibility(View.GONE);
 		containerPullToRefresh.setVisibility(View.VISIBLE);
 		
 		listView.setAdapter(new ProjectAdapter(this, pipelines));

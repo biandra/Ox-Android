@@ -2,6 +2,7 @@ package com.globallogic.ox.app.services;
 
 import java.util.List;
 
+import com.globallogic.ox.domain.Stage;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.parsing.IJSONParser;
 import com.google.inject.Inject;
@@ -30,7 +31,13 @@ public class ServicesImpl implements ServicesInterface{
 //	}
 
 	@Override
-	public void getProject(ServiceListener<List<Project>> listener,	Class<Project> clazz) {
+	public void getProjects(ServiceListener<List<Project>> listener, Class<Project> clazz) {
+		String url = "https://ox-server.herokuapp.com/me/projects";
+		connection.makeArrayGetRequest(url, listener, clazz);
+	}
+
+	@Override
+	public void getStages(ServiceListener<List<Stage>> listener, int idProject, Class<Stage> clazz) {
 		String url = "https://ox-server.herokuapp.com/me/projects";
 		connection.makeArrayGetRequest(url, listener, clazz);
 	}

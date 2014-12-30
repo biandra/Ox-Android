@@ -10,5 +10,5 @@ public interface DashboardActivityListener {
 	void onGetDashboardStarted();
 	void onGetDashboardFinished(List<Project> pipelines);
 	void onGetDashboardError();
-	void onServerError(ServerErrorInfo errorInfo);;
+	void onServerError(ServerErrorInfo errorInfo);
 }

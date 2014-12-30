@@ -1,27 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical">
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pipeline_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:fillViewport="true"
+        android:gravity="center"
+        android:overScrollMode="never"
+        android:requiresFadingEdge="none"
+        android:scrollbars="none"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="disabled"
+        tools:ignore="UselessParent">
+        
+		<LinearLayout
+            android:id="@+id/pipeline_container_pull_to_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        />
-    <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/indicator"
-        android:padding="10dip"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        app:radius="5dp"
-        app:fillColor="#0b3f41"
-        app:pageColor="#ffffff"
-        app:strokeColor="#0b3f41"
-        app:strokeWidth="2dp"
-        />
+            <TextView
+                android:id="@+id/pipeline_pull_to_refresh_hint"
+                style="@style/pull_to_refresh_hint_style"
+                android:layout_weight="0"
+                android:text="@string/pull_to_refresh_footer_text"
+                android:visibility="gone" />
+            
+<!--             aca la imagen del error -->
+		
+		</LinearLayout>
+	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+	
+	<LinearLayout
+	    xmlns:app="http://schemas.android.com/apk/res-auto"
+	    android:id="@+id/view_Pipeline_Pages"
+	    android:orientation="vertical"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:visibility="gone">
+	
+	    <android.support.v4.view.ViewPager
+	        android:id="@+id/pager"
+	        android:layout_width="fill_parent"
+	        android:layout_height="0dp"
+	        android:layout_weight="1"
+	        />
+	    <com.viewpagerindicator.CirclePageIndicator
+	        android:id="@+id/indicator"
+	        android:padding="10dip"
+	        android:layout_height="wrap_content"
+	        android:layout_width="fill_parent"
+	        app:radius="5dp"
+	        app:fillColor="#0b3f41"
+	        app:pageColor="#ffffff"
+	        app:strokeColor="#0b3f41"
+	        app:strokeWidth="2dp"
+	        />
+	
+	</LinearLayout>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/pipeline_request_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shadow"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <com.globallogic.ox.app.component.progressbarwheel.ProgressWheel
+            style="@style/progresswheel_custom_style"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+	
+</FrameLayout>

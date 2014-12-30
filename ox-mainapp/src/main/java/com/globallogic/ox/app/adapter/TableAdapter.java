@@ -17,7 +17,7 @@ import com.globallogic.ox.R;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
 import com.globallogic.ox.domain.TableRow;
-import com.globallogic.ox.domain.ViewHolderJob;
+import com.globallogic.ox.domain.ViewHolderStage;
 
 public class TableAdapter extends BaseAdapter {
 	
@@ -48,21 +48,21 @@ public class TableAdapter extends BaseAdapter {
                 
                 for (int i = 0; i < tableRow.getSize(); i++) {
                     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    View layoutCellView = inflater.inflate(R.layout.job, parent, false);
+                    View layoutCellView = inflater.inflate(R.layout.stage, parent, false);
                 	
 //                	TableCell tableCell = tableRow.getCellValue(i);
                     //TODO: cambiar este hardcodeo
                 	LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(120, LinearLayout.LayoutParams.WRAP_CONTENT);
 	    	        
-                	ViewHolderJob viewHolder = new ViewHolderJob(context);
-	    	        viewHolder.setFlipper((ViewFlipper) layoutCellView.findViewById(R.id.viewFlipper_job));
+                	ViewHolderStage viewHolder = new ViewHolderStage(context);
+	    	        viewHolder.setFlipper((ViewFlipper) layoutCellView.findViewById(R.id.viewFlipper_stage));
 	    	        viewHolder.getFlipper().setDisplayedChild(0);
-	    	        viewHolder.setButtonShow((Button) layoutCellView.findViewById(R.id.button_job_show));
+	    	        viewHolder.setButtonRun((Button) layoutCellView.findViewById(R.id.button_stage_run));
 	    	        ((ViewGroup) layoutCellView).addView(viewHolder);
 	    	        layoutTableRowView.setGravity(Gravity.CENTER);
 	    	        layoutTableRowView.addView(layoutCellView, layoutParams);
 	    	        
-	                final ViewFlipper flipperTemp = (ViewFlipper) layoutCellView.findViewById(R.id.viewFlipper_job);
+	                final ViewFlipper flipperTemp = (ViewFlipper) layoutCellView.findViewById(R.id.viewFlipper_stage);
 	        	    flipperTemp.setOnClickListener(new OnClickListener() {
 
 	        			@Override

@@ -4,7 +4,7 @@
     android:layout_height="?android:attr/listPreferredItemHeight" >
  
 	<ViewFlipper
-        android:id="@+id/viewFlipper_job"
+        android:id="@+id/viewFlipper_stage"
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
@@ -16,7 +16,7 @@
         android:addStatesFromChildren="true" >
 
        	<LinearLayout
-            android:id="@+id/viewFlipper_job_front"
+            android:id="@+id/viewFlipper_stage_front"
             android:background="@drawable/border_card"
             android:layout_width="match_parent"
             android:layout_height="80dp">
@@ -24,25 +24,18 @@
         </LinearLayout>
 
        	<LinearLayout
-            android:id="@+id/viewFlipper_job_back"
+            android:id="@+id/viewFlipper_stage_back"
             android:background="@drawable/border_card_back"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:orientation="horizontal">
        	    
-	       	    <Button
-	       	        android:id="@+id/button_job_run"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:layout_marginRight="50dp"			        
-			        android:background="@drawable/bg_button_runpipeline"/>
-	       	    
-	       	    <Button
-			        android:id="@+id/button_job_show"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:background="@drawable/bg_button_detailspipeline"/>
+       	    <Button
+       	        android:id="@+id/button_stage_run"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"		        
+		        android:background="@drawable/bg_button_runpipeline"/>
 
         </LinearLayout>
         

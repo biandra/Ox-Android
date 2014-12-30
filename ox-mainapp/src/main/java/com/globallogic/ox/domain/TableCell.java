@@ -2,23 +2,15 @@ package com.globallogic.ox.domain;
 
 public class TableCell {
 	
-	private Job job;
+	private Stage stage;
     private int width;
     private int height;
     
-    public TableCell(Job job, int width, int height) {
-            this.job = job;
+    public TableCell(Stage stage, int width, int height) {
+            this.setStage(stage);
             this.width = width;
             this.height = height;
     }
-    
-    public Job getJob() {
-		return job;
-	}
-
-	public void setJob(Job job) {
-		this.job = job;
-	}
 
 	public int getWidth() {
 		return width;
@@ -34,5 +26,13 @@ public class TableCell {
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 }
