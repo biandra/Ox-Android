@@ -3,7 +3,6 @@ package com.globallogic.ox.app.activities;
 import java.util.ArrayList;
 import java.util.List;
 
-import roboguice.inject.InjectFragment;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -17,8 +16,11 @@ import com.globallogic.ox.app.activities.base.BaseActivitySlideMenuActionBarBack
 import com.globallogic.ox.app.adapter.PipelineFragmentAdapter;
 import com.globallogic.ox.app.viewlistener.PipelineActivityListener;
 import com.globallogic.ox.app.viewmodel.PipelineActivityModel;
-import com.globallogic.ox.domain.Stage;
+import com.globallogic.ox.domain.Cell;
 import com.globallogic.ox.domain.ServerErrorInfo;
+import com.globallogic.ox.domain.Stage;
+import com.globallogic.ox.domain.Table;
+import com.globallogic.ox.domain.TableRow;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnPullEventListener;
@@ -31,7 +33,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
 
     private PipelineFragmentAdapter mAdapter;
     private PipelineActivityModel model;
-    private int idProject;
+    private int projectId;
     
     @InjectView(R.id.view_Pipeline_Pages)
     private View pipelinesPages;
@@ -63,7 +65,8 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         super.onCreate(savedInstanceState);
         
         Bundle bundle = getIntent().getExtras();
-        idProject = bundle.getInt("idProject");
+        projectId = bundle.getInt("projectId");
+        setTitle(bundle.getString("projectName"));
         
         //TODO:listener cuando cambio de viewPage. Ver como arreglarlo
 //        mIndicator.setOnPageChangeListener(new OnPageChangeListener(){
@@ -84,12 +87,12 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
 //        });
         
         model = new PipelineActivityModel(this);
-        model.getStages(idProject);
+        model.getStages(projectId);
         
         pullToRefreshScroll.setOnRefreshListener(new OnRefreshListener<ScrollView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ScrollView> arg0) {
-                model.getStages(idProject);
+                model.getStages(projectId);
             }
         });
         
@@ -150,10 +153,48 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         progressDialog.setVisibility(View.GONE);
         pullToRefreshHintView.setVisibility(View.GONE);
         containerPullToRefresh.setVisibility(View.VISIBLE);
-        
-        mAdapter = new PipelineFragmentAdapter(getSupportFragmentManager(), stages);
+        ArrayList<Table> tables = builTables();
+        if (tables.size() < 2) {
+        	mIndicator.setVisibility(View.GONE);
+		}
+        else {
+        	mIndicator.setVisibility(View.VISIBLE);
+        }
+        mAdapter = new PipelineFragmentAdapter(getSupportFragmentManager(), tables);
         mPager.setAdapter(mAdapter);
         mIndicator.setViewPager(mPager);
     }
+    
+    private ArrayList<Table> builTables() {
+		ArrayList<Table> tables = new ArrayList<Table>();
+		
+		List<Cell> cells1 = new ArrayList<Cell>();
+      	Stage stage = new Stage();
+      	stage.setId(1);
+      	Cell cell = new Cell();
+      	cell.setStage(stage);
+      	cells1.add(cell);
+      	cells1.add(cell);
+      	
+		List<Cell> cells2 = new ArrayList<Cell>();
+      	cells2.add(new Cell());
+      	cells2.add(new Cell());
+      	
+		List<Cell> cells3 = new ArrayList<Cell>();
+      	cells3.add(new Cell());
+      	cells3.add(cell);
+	      	
+	    Table table = new Table();
+	    ArrayList<TableRow> column = new ArrayList<TableRow>();
+	    column.add(new TableRow(cells1));
+	    column.add(new TableRow(cells2));
+	    column.add(new TableRow(cells3));
+	    
+	    table.setColumn(column);
+	    
+		tables.add(table);
+		tables.add(table);
+		return tables;
+	}
     
 }

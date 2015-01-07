@@ -1,45 +1,29 @@
 package com.globallogic.ox.app.adapter;
 
 import java.util.List;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-
 import com.globallogic.ox.app.fragment.PipelineFragment;
-import com.globallogic.ox.domain.Stage;
+import com.globallogic.ox.domain.Table;
 
 public class PipelineFragmentAdapter extends FragmentPagerAdapter{
 
-    protected static final String[] CONTENT = new String[] { "This", "Is", "A", "Test", };
+    private List<Table> tables;
 
-    private int mCount = CONTENT.length;
-    
-    private List<Stage> stages;
-
-    public PipelineFragmentAdapter(FragmentManager fm, List<Stage> stages) {
+    public PipelineFragmentAdapter(FragmentManager fm, List<Table> tables) {
         super(fm);
-        this.stages = stages;
+        this.tables = tables;
     }
 
-    @Override
+	@Override
     public Fragment getItem(int position) {
-        return PipelineFragment.newInstance(CONTENT[position % CONTENT.length]);
+		return new PipelineFragment(this.tables.get(position));
     }
 
-    @Override
-    public int getItemPosition(Object object){
-        return POSITION_NONE;
-    }
-    
     @Override
     public int getCount() {
-        return mCount;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-      return PipelineFragmentAdapter.CONTENT[position % CONTENT.length];
+        return tables.size();
     }
 
     //TODO

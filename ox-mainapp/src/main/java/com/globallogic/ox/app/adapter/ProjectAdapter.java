@@ -109,7 +109,8 @@ public class ProjectAdapter extends BaseAdapter{
 	        public void onClick(View v) {
 //	            flipperTemp.showNext();
 				Intent intent = new Intent(context, PipelineActivity.class);
-				intent.putExtra("idProject", item.getId());
+				intent.putExtra("projectId", item.getId());
+				intent.putExtra("projectName", item.getName());
 				context.startActivity(intent);
 	        }
 	    });
