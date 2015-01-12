@@ -14,6 +14,7 @@ import android.widget.ScrollView;
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivitySlideMenuActionBarBack;
 import com.globallogic.ox.app.adapter.PipelineFragmentAdapter;
+import com.globallogic.ox.app.converter.TablesConverter;
 import com.globallogic.ox.app.viewlistener.PipelineActivityListener;
 import com.globallogic.ox.app.viewmodel.PipelineActivityModel;
 import com.globallogic.ox.domain.Cell;
@@ -34,6 +35,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
     private PipelineFragmentAdapter mAdapter;
     private PipelineActivityModel model;
     private int projectId;
+    private TablesConverter tablesConverter;
     
     @InjectView(R.id.view_Pipeline_Pages)
     private View pipelinesPages;
@@ -88,6 +90,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         
         model = new PipelineActivityModel(this);
         model.getStages(projectId);
+        this.tablesConverter = new TablesConverter();
         
         pullToRefreshScroll.setOnRefreshListener(new OnRefreshListener<ScrollView>() {
             @Override
@@ -110,8 +113,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
 
     @Override
     public void onGetPipelineStarted() {
-//        setViewLoading();
-    	setViewProjets(new ArrayList<Stage>());
+        setViewLoading();
     }
 
     @Override
@@ -121,14 +123,14 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
 
     @Override
     public void onGetPipelineError() {
-//        setViewError();
-    	setViewProjets(new ArrayList<Stage>());
+        setViewError();
+//    	setViewProjets(new ArrayList<Stage>());
     }
 
     @Override
     public void onServerError(ServerErrorInfo errorInfo) {
-//        setViewError();
-    	setViewProjets(new ArrayList<Stage>());
+        setViewError();
+//    	setViewProjets(new ArrayList<Stage>());
     }
 
     private void setViewError() {
@@ -153,7 +155,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         progressDialog.setVisibility(View.GONE);
         pullToRefreshHintView.setVisibility(View.GONE);
         containerPullToRefresh.setVisibility(View.VISIBLE);
-        ArrayList<Table> tables = builTables();
+        List<Table> tables = tablesConverter.convert(stages);
         if (tables.size() < 2) {
         	mIndicator.setVisibility(View.GONE);
 		}
@@ -164,37 +166,5 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         mPager.setAdapter(mAdapter);
         mIndicator.setViewPager(mPager);
     }
-    
-    private ArrayList<Table> builTables() {
-		ArrayList<Table> tables = new ArrayList<Table>();
-		
-		List<Cell> cells1 = new ArrayList<Cell>();
-      	Stage stage = new Stage();
-      	stage.setId(1);
-      	Cell cell = new Cell();
-      	cell.setStage(stage);
-      	cells1.add(cell);
-      	cells1.add(cell);
-      	
-		List<Cell> cells2 = new ArrayList<Cell>();
-      	cells2.add(new Cell());
-      	cells2.add(new Cell());
-      	
-		List<Cell> cells3 = new ArrayList<Cell>();
-      	cells3.add(new Cell());
-      	cells3.add(cell);
-	      	
-	    Table table = new Table();
-	    ArrayList<TableRow> column = new ArrayList<TableRow>();
-	    column.add(new TableRow(cells1));
-	    column.add(new TableRow(cells2));
-	    column.add(new TableRow(cells3));
-	    
-	    table.setColumn(column);
-	    
-		tables.add(table);
-		tables.add(table);
-		return tables;
-	}
     
 }

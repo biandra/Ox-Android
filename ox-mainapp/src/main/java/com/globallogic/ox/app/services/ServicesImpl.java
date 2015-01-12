@@ -32,13 +32,13 @@ public class ServicesImpl implements ServicesInterface{
 
 	@Override
 	public void getProjects(ServiceListener<List<Project>> listener, Class<Project> clazz) {
-		String url = "https://ox-server.herokuapp.com/me/projects";
+		String url = "http://172.17.201.94:9091/Ox-Server/me/projects";
 		connection.makeArrayGetRequest(url, listener, clazz);
 	}
 
 	@Override
 	public void getStages(ServiceListener<List<Stage>> listener, int idProject, Class<Stage> clazz) {
-		String url = "https://ox-server.herokuapp.com/me/projects";
+		String url = "http://172.17.201.94:9091/Ox-Server/me/projects/" + idProject + "/stages";
 		connection.makeArrayGetRequest(url, listener, clazz);
 	}
 	
