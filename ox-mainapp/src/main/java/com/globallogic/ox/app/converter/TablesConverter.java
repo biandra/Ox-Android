@@ -20,7 +20,10 @@ public class TablesConverter {
 		List<StageInTable> stagesInTable = new ArrayList<StageInTable>();
 		rowPosition = 0;
 		int initialColumnPosition = 0;
-		buildStageInTable(stagesInTable,stages, stage, initialColumnPosition);
+		
+		if (stage != null) {
+			buildStageInTable(stagesInTable,stages, stage, initialColumnPosition);
+		}
 		
 		return buildTables(stagesInTable, getMaxRowPositionStageInTable(stagesInTable), getMaxColumnPositionStageInTable(stagesInTable));
 		

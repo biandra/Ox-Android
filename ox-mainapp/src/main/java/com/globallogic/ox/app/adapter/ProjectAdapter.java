@@ -4,6 +4,9 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +27,7 @@ import com.globallogic.ox.domain.ViewHolderPipeline;
 
 public class ProjectAdapter extends BaseAdapter{
 
+	private static final String SUCCESS = "success";
 	private Context context;
     private List<Project> items;
 	
@@ -88,6 +92,15 @@ public class ProjectAdapter extends BaseAdapter{
 	        viewHolder.getName().setText(item.getName());
 	        viewHolder.setNumber((TextView) convertView.findViewById(R.id.textView_pipeline_number));
 	        viewHolder.getNumber().setText(item.getStatics().getNumber());
+	        
+	        LayerDrawable bgDrawable = (LayerDrawable)convertView.findViewById(R.id.viewFlipper_pipeline_front).getBackground();
+	        GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape_id);
+	        
+	        if ((item.getStatus() == null) || (SUCCESS.compareTo(item.getStatus()) == 0)) {
+	        	 shape.setColor(Color.parseColor("#3a936f"));
+			} else {
+				shape.setColor(Color.parseColor("#7f2626"));
+			}
 	        
 	        convertView.setTag(viewHolder);
 	    } else {

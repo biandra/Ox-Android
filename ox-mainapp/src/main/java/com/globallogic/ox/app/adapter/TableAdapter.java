@@ -1,6 +1,9 @@
 package com.globallogic.ox.app.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +12,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
+import com.globallogic.ox.domain.Stage;
 import com.globallogic.ox.domain.Table;
 import com.globallogic.ox.domain.TableRow;
 import com.globallogic.ox.domain.ViewHolderStage;
@@ -23,6 +28,8 @@ public class TableAdapter extends BaseAdapter {
         private Context context;
     
         private Table table;
+        
+        private static final String SUCCESS = "success";
         
         public TableAdapter(Context context, Table table) {
                 this.context = context;
@@ -54,13 +61,29 @@ public class TableAdapter extends BaseAdapter {
                 	layoutParams.weight=1;
                 	
                 	if (tableRow.getCell().get(i).getStage() != null){
+                		
+                		Stage stage = tableRow.getCell().get(i).getStage();
+                		
                 		ViewHolderStage viewHolder = new ViewHolderStage(context);
                 		viewHolder.setFlipper((ViewFlipper) layoutCellView.findViewById(R.id.viewFlipper_stage));
                 		viewHolder.getFlipper().setDisplayedChild(0);
                 		viewHolder.setButtonRun((Button) layoutCellView.findViewById(R.id.button_stage_run));
+            	        viewHolder.setName((TextView) layoutCellView.findViewById(R.id.textView_stage_name));
+            	        viewHolder.getName().setText(stage.getType());
+            	        viewHolder.setNumber((TextView) layoutCellView.findViewById(R.id.textView_stage_number));
+            	        viewHolder.getNumber().setText("0");
                 		((ViewGroup) layoutCellView).addView(viewHolder);
                 		layoutTableRowView.setGravity(Gravity.CENTER);
                 		layoutTableRowView.addView(layoutCellView, layoutParams);
+                		
+            	        LayerDrawable bgDrawable = (LayerDrawable)layoutCellView.findViewById(R.id.viewFlipper_stage_front).getBackground();
+            	        GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape_id);
+            	        
+            	        if ((stage.getStatus() == null) || (SUCCESS.compareTo(stage.getStatus()) == 0)) {
+            	        	 shape.setColor(Color.parseColor("#3a936f"));
+            			} else {
+            				shape.setColor(Color.parseColor("#7f2626"));
+            			}
                 		
                 		final ViewFlipper flipperTemp = (ViewFlipper) layoutCellView.findViewById(R.id.viewFlipper_stage);
                 		flipperTemp.setOnClickListener(new OnClickListener() {

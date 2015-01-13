@@ -17,7 +17,7 @@
 
        	<RelativeLayout
             android:id="@+id/viewFlipper_pipeline_front"
-            android:background="@drawable/card_green"
+            android:background="@drawable/card_front"
             android:layout_width="fill_parent"
             android:layout_height="80dp">
             

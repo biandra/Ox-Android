@@ -15,6 +15,8 @@ public class Stage implements Serializable{
 	private String url;
 	private String branch;
 	private Integer previous;
+	private String status;
+    private String time;
 	private List<Integer> next;
 	
 	public int getId() {
@@ -52,6 +54,18 @@ public class Stage implements Serializable{
 	}
 	public void setNext(List<Integer> next) {
 		this.next = next;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 	

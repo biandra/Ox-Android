@@ -35,7 +35,23 @@
                 android:text="@string/pull_to_refresh_footer_text"
                 android:visibility="gone" />
             
-<!--             aca la imagen del error -->
+            <LinearLayout
+		       android:id="@+id/view_Pipeline_Error"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:layout_gravity="center"
+		       android:background="@drawable/card_front"
+		       android:visibility="gone" >
+		
+		       <TextView
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:gravity="center"
+			        android:text="@string/error_service"
+			        android:textColor="@color/white"
+			        android:textSize="17sp"/>
+		
+		   </LinearLayout>
 		
 		</LinearLayout>
 	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>

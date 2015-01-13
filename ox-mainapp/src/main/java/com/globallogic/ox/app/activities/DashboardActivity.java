@@ -1,6 +1,5 @@
 package com.globallogic.ox.app.activities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import roboguice.inject.InjectView;
@@ -18,7 +17,6 @@ import com.globallogic.ox.app.viewlistener.DashboardActivityListener;
 import com.globallogic.ox.app.viewmodel.DashboardActivityModel;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ServerErrorInfo;
-import com.globallogic.ox.domain.Statics;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnPullEventListener;
@@ -94,26 +92,26 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 
 	@Override
 	public void onGetDashboardError() {
-//		setViewError();
+		setViewError();
 		
-		List<Project> pipelines = new ArrayList<Project>();
-		Project p = new Project();
-		p.setId(1);
-		p.setStatics(new Statics());
-		pipelines.add(p);
-		setViewProjets(pipelines);
+//		List<Project> pipelines = new ArrayList<Project>();
+//		Project p = new Project();
+//		p.setId(1);
+//		p.setStatics(new Statics());
+//		pipelines.add(p);
+//		setViewProjets(pipelines);
 	}
 
 	@Override
 	public void onServerError(ServerErrorInfo errorInfo) {
-//		setViewError();
+		setViewError();
 		
-		List<Project> pipelines = new ArrayList<Project>();
-		Project p = new Project();
-		p.setId(1);
-		p.setStatics(new Statics());
-		pipelines.add(p);
-		setViewProjets(pipelines);
+//		List<Project> pipelines = new ArrayList<Project>();
+//		Project p = new Project();
+//		p.setId(1);
+//		p.setStatics(new Statics());
+//		pipelines.add(p);
+//		setViewProjets(pipelines);
 	}
 	
 	private void setViewError() {

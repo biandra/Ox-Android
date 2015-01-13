@@ -1,6 +1,5 @@
 package com.globallogic.ox.app.activities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import roboguice.inject.InjectView;
@@ -17,11 +16,9 @@ import com.globallogic.ox.app.adapter.PipelineFragmentAdapter;
 import com.globallogic.ox.app.converter.TablesConverter;
 import com.globallogic.ox.app.viewlistener.PipelineActivityListener;
 import com.globallogic.ox.app.viewmodel.PipelineActivityModel;
-import com.globallogic.ox.domain.Cell;
 import com.globallogic.ox.domain.ServerErrorInfo;
 import com.globallogic.ox.domain.Stage;
 import com.globallogic.ox.domain.Table;
-import com.globallogic.ox.domain.TableRow;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnPullEventListener;
@@ -39,6 +36,9 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
     
     @InjectView(R.id.view_Pipeline_Pages)
     private View pipelinesPages;
+    
+	@InjectView(R.id.view_Pipeline_Error)
+	private View errorView;
     
     @InjectView(R.id.pipeline_request_loading)
     private RelativeLayout progressDialog;
@@ -139,6 +139,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         pipelinesPages.setVisibility(View.GONE);
         progressDialog.setVisibility(View.GONE);
         pullToRefreshHintView.setVisibility(View.VISIBLE);
+        errorView.setVisibility(View.VISIBLE);
         containerPullToRefresh.setVisibility(View.VISIBLE);
     }
 
@@ -146,6 +147,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         pullToRefreshScroll.setMode(Mode.DISABLED);
         pipelinesPages.setVisibility(View.GONE);
         progressDialog.setVisibility(View.VISIBLE);
+        errorView.setVisibility(View.GONE);
     }
     
     private void setViewProjets(List<Stage> stages) {
@@ -154,6 +156,7 @@ public class PipelineActivity extends BaseActivitySlideMenuActionBarBack impleme
         pipelinesPages.setVisibility(View.VISIBLE);
         progressDialog.setVisibility(View.GONE);
         pullToRefreshHintView.setVisibility(View.GONE);
+        errorView.setVisibility(View.GONE);
         containerPullToRefresh.setVisibility(View.VISIBLE);
         List<Table> tables = tablesConverter.convert(stages);
         if (tables.size() < 2) {

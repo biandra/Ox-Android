@@ -40,11 +40,10 @@
 		       android:layout_width="match_parent"
 		       android:layout_height="wrap_content"
 		       android:layout_gravity="center"
-		       android:background="@drawable/card_green"
+		       android:background="@drawable/card_front"
 		       android:visibility="gone" >
 		
 		       <TextView
-			        android:id="@+id/profile_address_title"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:gravity="center"

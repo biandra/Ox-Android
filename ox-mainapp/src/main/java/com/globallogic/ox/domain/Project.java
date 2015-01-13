@@ -14,6 +14,7 @@ public class Project implements Serializable{
 	private String description;
 	private String stages;
 	private String runs;
+	private String status;
 	private Statics statics;
 	
 	public String getStages() {
@@ -51,6 +52,12 @@ public class Project implements Serializable{
 	}
 	public void setStatics(Statics statics) {
 		this.statics = statics;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }
