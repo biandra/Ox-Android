@@ -28,8 +28,10 @@
     <color name="grey_dark_text_personal">#747474</color>
     <color name="green_text_personal_black">#00b4c5</color>
 
-    <!-- Side menu colors -->
-    <color name="grey_card_back">#747474</color>
+    <!-- Card colors -->
+    <color name="background_card_black">#527f7e</color>
+    <color name="background_card_green">#3a936f</color>
+    <color name="background_card_red">#7f2626</color>
 
     <!-- Side menu colors -->
     <color name="side_menu_back_color">#808080</color>
