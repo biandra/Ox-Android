@@ -1,22 +1,19 @@
 package com.globallogic.ox.domain;
 
-public class ServerErrorResponse {
+import java.io.Serializable;
 
-	private String message;
-	private String code;
+public class ServerErrorResponse  implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public ServerErrorResponse(String message, String code) {
+	private String message;
+	
+	public ServerErrorResponse(String message) {
 		super();
 		this.setMessage(message);
-		this.code = code;
 	}
 
 	public String getMessage() {

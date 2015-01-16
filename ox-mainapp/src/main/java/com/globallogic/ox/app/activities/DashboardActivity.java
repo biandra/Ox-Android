@@ -142,4 +142,5 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		
 		listView.setAdapter(new ProjectAdapter(this, pipelines));
 	}
+
 }

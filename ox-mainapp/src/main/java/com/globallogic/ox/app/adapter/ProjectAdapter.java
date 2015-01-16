@@ -21,6 +21,7 @@ import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.PipelineActivity;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
+import com.globallogic.ox.app.viewmodel.DashboardActivityModel;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ViewHolderPipeline;
 
@@ -77,7 +78,7 @@ public class ProjectAdapter extends BaseAdapter{
 
 	    final ViewFlipper flipperTemp;
 	    final Project item = (Project) getItem(position);
-	    ViewHolderPipeline viewHolder;
+	    final ViewHolderPipeline viewHolder;
 	    
 		if (convertView == null) {
 	    	// Create a new view into the list.
@@ -88,6 +89,7 @@ public class ProjectAdapter extends BaseAdapter{
 	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	        viewHolder.setButtonShow((Button) convertView.findViewById(R.id.button_pipeline_show));
+	        viewHolder.setButtonRun((Button) convertView.findViewById(R.id.button_pipeline_run));
 	        viewHolder.setName((TextView) convertView.findViewById(R.id.textView_pipeline_name));
 	        viewHolder.getName().setText(item.getName());
 	        viewHolder.setNumber((TextView) convertView.findViewById(R.id.textView_pipeline_number));
@@ -95,6 +97,7 @@ public class ProjectAdapter extends BaseAdapter{
 	        
 	        LayerDrawable bgDrawable = (LayerDrawable)convertView.findViewById(R.id.viewFlipper_pipeline_front).getBackground();
 	        GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape_id);
+	        viewHolder.setShape(shape);
 	        
 	        if ((item.getStatus() == null) || (SUCCESS.compareTo(item.getStatus()) == 0)) {
 	        	 shape.setColor(Color.parseColor("#3a936f"));
@@ -125,6 +128,12 @@ public class ProjectAdapter extends BaseAdapter{
 				intent.putExtra("projectId", item.getId());
 				intent.putExtra("projectName", item.getName());
 				context.startActivity(intent);
+	        }
+	    });
+	    
+	    viewHolder.getButtonRun().setOnClickListener(new OnClickListener() {
+	        public void onClick(View v) {
+	        	viewHolder.getModel().postRun(item.getId());
 	        }
 	    });
 	    

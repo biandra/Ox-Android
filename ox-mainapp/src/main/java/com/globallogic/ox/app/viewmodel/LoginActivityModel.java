@@ -1,5 +1,6 @@
 package com.globallogic.ox.app.viewmodel;
 
+import com.globallogic.ox.app.services.ServiceError;
 import com.globallogic.ox.app.services.ServiceListener;
 import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
@@ -52,6 +53,12 @@ public class LoginActivityModel {
 		@Override
 		public void onServerError(ServerErrorInfo errorInfo) {
 			view.onServerError(errorInfo);
+		}
+
+		@Override
+		public void onRequestError(ServiceError error) {
+			// TODO Auto-generated method stub
+			
 		}
 	};
 	

@@ -13,7 +13,9 @@ public interface ServiceListener<T> {
 
 	void onSessionError();
 
-	void onRequestFinished(T result);
-
+	void onRequestError(ServiceError error);
+	
 	void onParseError(ParseError error);
+
+	void onRequestFinished(T result);
 }

@@ -1,6 +1,7 @@
 package com.globallogic.ox.app.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.globallogic.ox.R;
+import com.globallogic.ox.app.activities.PipelineActivity;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
 import com.globallogic.ox.domain.Stage;
@@ -93,6 +95,12 @@ public class TableAdapter extends BaseAdapter {
                 				AnimationFactory.flipTransition(flipperTemp, FlipDirection.LEFT_RIGHT);
                 			}
                 		});
+                		
+                	    viewHolder.getButtonRun().setOnClickListener(new OnClickListener() {
+                	        public void onClick(View v) {
+                	        	//Run Stage
+                	        }
+                	    });
                 	}
                 	else{
                 		//TODO: cambiar esto!!

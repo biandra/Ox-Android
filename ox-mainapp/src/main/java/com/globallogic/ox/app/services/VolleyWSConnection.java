@@ -10,20 +10,20 @@ import org.json.JSONObject;
 import android.content.Context;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response.ErrorListener;
+import com.android.volley.Response.Listener;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.MyJsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.Response.Listener;
-import com.android.volley.DefaultRetryPolicy;
-import com.globallogic.ox.parsing.IJSONParser;
 import com.globallogic.ox.app.constant.Constants;
 import com.globallogic.ox.exceptions.ParseError;
+import com.globallogic.ox.parsing.IJSONParser;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -80,13 +80,13 @@ public class VolleyWSConnection implements WSConnection{
 
 	private <T> void makeObjectRequest(Integer method, String url, final ServiceListener<T> listener, HashMap<String, String> params, final Class<T> clazz) {
 		JSONObject jsonRequest = null;
-		JsonObjectRequest req = null;
+		MyJsonObjectRequest req = null;
 		
 		if (params != null) {
 			jsonRequest = new JSONObject(params);
 		}
 		
-		req = new JsonObjectRequest(method, url, jsonRequest, getListener(listener,	clazz), getErrorListener(listener, clazz)){
+		req = new MyJsonObjectRequest(method, url, jsonRequest, getListener(listener,	clazz), getErrorListener(listener, clazz)){
 
 			@Override
 			public Map<String, String> getHeaders() throws AuthFailureError {
@@ -101,6 +101,28 @@ public class VolleyWSConnection implements WSConnection{
 		addToRequestQueue(req);
 	}
 	
+//	private <T> void makeObjectRequest(Integer method, String url, final ServiceListener<T> listener, HashMap<String, String> params, final Class<T> clazz) {
+//		JSONObject jsonRequest = null;
+//		JsonObjectRequest req = null;
+//		
+//		if (params != null) {
+//			jsonRequest = new JSONObject(params);
+//		}
+//		req = new JsonObjectRequest(method, url, jsonRequest, getListener(listener,	clazz), getErrorListener(listener, clazz)) {
+//
+//			@Override
+//			public Map<String, String> getHeaders() throws AuthFailureError {
+//				HashMap<String, String> headers = new HashMap<String, String>();
+//				headers.put(Constants.TOKEN_PARAM_NAME,	Constants.TOKEN_PAREM_VALUE + " " + "accessToken");
+//				return headers;
+//			}
+//		};
+//
+//		req.setShouldCache(cacheEnabled);
+//		listener.onRequestStarted();
+//		addToRequestQueue(req);
+//	}
+	
 	/**
 	 * Adds the request to the corresponding request queue 
 	 * @param request
@@ -114,9 +136,11 @@ public class VolleyWSConnection implements WSConnection{
 		return new Listener<JSONObject>() {
 			@Override
 			public void onResponse(JSONObject response) {
-				T object;
+				T object = null;
 				try {
-					object = jsonParser.toObject(response.toString(), clazz);
+					if (object != null){
+						object = jsonParser.toObject(response.toString(), clazz);
+					}
 					listener.onRequestFinished(object);
 				} catch (ParseError e) {
 					listener.onParseError(e);
@@ -124,6 +148,7 @@ public class VolleyWSConnection implements WSConnection{
 			}
 		};
 	}
+	
 	
 	private <T> Listener<JSONArray> getArrayListener(final ServiceListener<List<T>> listener, final Class<T> clazz) {
 		return new Listener<JSONArray>() {

@@ -11,6 +11,8 @@ public class Statics implements Serializable{
 
 	private String number;
     private String time;
+    private int progress;
+    
 	public String getNumber() {
 		return number;
 	}
@@ -22,6 +24,12 @@ public class Statics implements Serializable{
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public int getProgress() {
+		return progress;
+	}
+	public void setProgress(int progress) {
+		this.progress = progress;
 	}
 	
 }

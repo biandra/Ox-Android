@@ -2,6 +2,7 @@ package com.globallogic.ox.app.viewmodel;
 
 import java.util.List;
 
+import com.globallogic.ox.app.services.ServiceError;
 import com.globallogic.ox.app.services.ServiceListener;
 import com.globallogic.ox.app.services.ServicesInterface;
 import com.globallogic.ox.app.utils.RoboguiceUtils;
@@ -56,7 +57,13 @@ public class DashboardActivityModel {
 			public void onServerError(ServerErrorInfo errorInfo) {
 				view.onServerError(errorInfo);
 			}
+
+			@Override
+			public void onRequestError(ServiceError error) {
+				view.onGetDashboardError();
+			}
 			
 		}, Project.class);
 	}
+	
 }
