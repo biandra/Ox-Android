@@ -18,10 +18,10 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.globallogic.ox.R;
+import com.globallogic.ox.app.activities.DashboardActivity;
 import com.globallogic.ox.app.activities.PipelineActivity;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
-import com.globallogic.ox.app.viewmodel.DashboardActivityModel;
 import com.globallogic.ox.domain.Project;
 import com.globallogic.ox.domain.ViewHolderPipeline;
 
@@ -31,8 +31,10 @@ public class ProjectAdapter extends BaseAdapter{
 	private static final String SUCCESS = "success";
 	private Context context;
     private List<Project> items;
+    private DashboardActivity activity;
 	
-    public ProjectAdapter(Context context, List<Project> items) {
+    public ProjectAdapter(Context context, DashboardActivity activity, List<Project> items) {
+    	this.activity = activity;
         this.context = context;
         this.items = items;
     }
@@ -86,6 +88,7 @@ public class ProjectAdapter extends BaseAdapter{
             convertView = inflater.inflate(R.layout.pipeline, parent, false);
             
 	        viewHolder = new ViewHolderPipeline();
+	        viewHolder.setActivity(activity);
 	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	        viewHolder.setButtonShow((Button) convertView.findViewById(R.id.button_pipeline_show));
@@ -123,7 +126,6 @@ public class ProjectAdapter extends BaseAdapter{
 	    
 	    viewHolder.getButtonShow().setOnClickListener(new OnClickListener() {
 	        public void onClick(View v) {
-//	            flipperTemp.showNext();
 				Intent intent = new Intent(context, PipelineActivity.class);
 				intent.putExtra("projectId", item.getId());
 				intent.putExtra("projectName", item.getName());
@@ -133,6 +135,7 @@ public class ProjectAdapter extends BaseAdapter{
 	    
 	    viewHolder.getButtonRun().setOnClickListener(new OnClickListener() {
 	        public void onClick(View v) {
+	        	flipperTemp.showNext();
 	        	viewHolder.getModel().postRun(item.getId());
 	        }
 	    });

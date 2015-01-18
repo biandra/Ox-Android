@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-
 import com.globallogic.ox.R;
 import com.globallogic.ox.app.activities.base.BaseActivitySlideMenuActionBarMenu;
 import com.globallogic.ox.app.adapter.ProjectAdapter;
@@ -140,7 +139,7 @@ public class DashboardActivity extends BaseActivitySlideMenuActionBarMenu implem
 		errorView.setVisibility(View.GONE);
 		containerPullToRefresh.setVisibility(View.VISIBLE);
 		
-		listView.setAdapter(new ProjectAdapter(this, pipelines));
+		listView.setAdapter(new ProjectAdapter(this, this, pipelines));
 	}
 
 }

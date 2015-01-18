@@ -1,10 +1,12 @@
 package com.globallogic.ox.domain;
 
+import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-
+import com.globallogic.ox.app.activities.DashboardActivity;
 import com.globallogic.ox.app.viewlistener.ViewHolderPipelineListener;
 import com.globallogic.ox.app.viewmodel.ViewHolderPipelineModel;
 
@@ -17,8 +19,50 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	private TextView number;
 	private GradientDrawable shape;
 	
-	private ViewHolderPipelineModel model;
+	private DashboardActivity activity;
+	
+	public Activity getActivity() {
+		return activity;
+	}
 
+	public void setActivity(DashboardActivity activity) {
+		this.activity = activity;
+	}
+
+	boolean blink = false;
+	Thread thread =new Thread(){
+	     @Override
+	     public void run(){
+		      try
+		      {
+			       while(true)
+			       {
+				       Thread.sleep(500);
+				       activity.runOnUiThread(new Runnable() {
+					        @Override
+					        public void run() {
+				                if (blink) {
+					            	blink = false;
+					            	shape.setColor(Color.parseColor("#3a936f"));
+					            	//TODO: es la forma q encontre para refrescar el cambio
+					            	name.setText(name.getText());
+				                }
+					            else{
+					            	blink = true;
+					            	shape.setColor(Color.parseColor("#999999"));
+					            	name.setText(name.getText());
+					            }
+				           }
+				       });
+			       }
+		      }catch (InterruptedException e) {
+		    	  // TODO: handle exception
+		      }
+	     }
+	};
+	
+	private ViewHolderPipelineModel model;
+	
 	public ViewHolderPipeline(){
 		this.setModel(new ViewHolderPipelineModel(this));
 	}
@@ -82,21 +126,19 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 
 	@Override
 	public void onPostViewHolderPipelineStarted() {
-		name.setText("COMIENZA");
 	}
 
 	@Override
 	public void onPostViewHolderPipelineError() {
-		name.setText("ERROR 1");
 	}
 
 	@Override
 	public void onServerError(ServerErrorInfo errorInfo) {
-		name.setText("ERROR 2");
 	}
 
 	@Override
 	public void onPostViewHolderPipelineFinished() {
-		name.setText("FINALIZADO");
+		thread.start();
 	}
+	
 }
