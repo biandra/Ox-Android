@@ -1,11 +1,12 @@
 package com.globallogic.ox.domain;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
 import com.globallogic.ox.app.activities.DashboardActivity;
 import com.globallogic.ox.app.viewlistener.ViewHolderPipelineListener;
 import com.globallogic.ox.app.viewmodel.ViewHolderPipelineModel;
@@ -24,6 +25,7 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	private boolean blink = false;
     private int averageTime;
     private float progress;
+    private Thread thread;
 	
 	public Activity getActivity() {
 		return activity;
@@ -33,38 +35,45 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 		this.activity = activity;
 	}
 
-	Thread thread =new Thread(){
-	     @Override
-	     public void run(){
-		      try
-		      {
-			       while(isInProgress())
-			       {
-				       Thread.sleep(BLINK_TIME);
+	private void createThread(){
+		thread =new Thread(){
+		     @Override
+		     public void run(){
+			      try
+			      {
+				       while(isInProgress()){
+					       Thread.sleep(BLINK_TIME);
+					       activity.runOnUiThread(new Runnable() {
+						        @Override
+						        public void run() {
+					                if (blink) {
+						            	blink = false;
+						            	shape.setAlpha(100);
+						            	//TODO: es la forma q encontre para refrescar el cambio
+						            	name.setText(name.getText());
+					                }
+						            else{
+						            	blink = true;
+						            	name.setText(name.getText());
+						            	shape.setAlpha(255);
+						            }
+					           }
+					       });
+				       }
 				       activity.runOnUiThread(new Runnable() {
-					        @Override
-					        public void run() {
-				                if (blink) {
-					            	blink = false;
-					            	shape.setAlpha(100);
-					            	//TODO: es la forma q encontre para refrescar el cambio
-					            	name.setText(name.getText());
-				                }
-					            else{
-					            	blink = true;
-					            	name.setText(name.getText());
-					            	shape.setAlpha(255);
-					            }
-				           }
+							@Override
+							public void run() {
+								shape.setAlpha(255);
+								ViewHolderPipeline.this.buttonRun.setVisibility(View.VISIBLE);
+							}
 				       });
-			       }
-			       shape.setAlpha(255);
-		      }catch (InterruptedException e) {
-		    	  // TODO: handle exception
-		      }
-	     }
-
-	};
+			      }catch (InterruptedException e) {
+			    	  // TODO: handle exception
+			      }
+		     }
+	
+		};
+	}
 
 	private boolean isInProgress() {
 		boolean inProgress = false;
@@ -155,6 +164,12 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	@Override
 	public void onPostViewHolderPipelineFinished() {
 		this.setProgress(0);
+		buttonRun.setVisibility(View.GONE);
+		
+		if(thread != null ) {
+			thread.interrupt();
+	    }
+		createThread();
 		thread.start();
 	}
 
