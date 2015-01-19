@@ -12,6 +12,7 @@ import com.globallogic.ox.app.viewmodel.ViewHolderPipelineModel;
 
 public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	
+	private static final int BLINK_TIME = 500;
 	private ViewFlipper flipper;
 	private Button buttonShow;
 	private Button buttonRun;
@@ -20,6 +21,9 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	private GradientDrawable shape;
 	
 	private DashboardActivity activity;
+	private boolean blink = false;
+    private int averageTime;
+    private float progress;
 	
 	public Activity getActivity() {
 		return activity;
@@ -29,37 +33,49 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 		this.activity = activity;
 	}
 
-	boolean blink = false;
 	Thread thread =new Thread(){
 	     @Override
 	     public void run(){
 		      try
 		      {
-			       while(true)
+			       while(isInProgress())
 			       {
-				       Thread.sleep(500);
+				       Thread.sleep(BLINK_TIME);
 				       activity.runOnUiThread(new Runnable() {
 					        @Override
 					        public void run() {
 				                if (blink) {
 					            	blink = false;
-					            	shape.setColor(Color.parseColor("#3a936f"));
+					            	shape.setAlpha(100);
 					            	//TODO: es la forma q encontre para refrescar el cambio
 					            	name.setText(name.getText());
 				                }
 					            else{
 					            	blink = true;
-					            	shape.setColor(Color.parseColor("#999999"));
 					            	name.setText(name.getText());
+					            	shape.setAlpha(255);
 					            }
 				           }
 				       });
 			       }
+			       shape.setAlpha(255);
 		      }catch (InterruptedException e) {
 		    	  // TODO: handle exception
 		      }
 	     }
+
 	};
+
+	private boolean isInProgress() {
+		boolean inProgress = false;
+		int periodsNumber = (int)(averageTime/BLINK_TIME);
+		float progressRemaining = 100 - progress;
+		if ((periodsNumber != 0) && (float)(progressRemaining / (float)((float)100 / periodsNumber)) > 0){
+			progress = progress + (float)((float)100 / periodsNumber);
+			inProgress = true;
+		}
+		return inProgress;
+	}
 	
 	private ViewHolderPipelineModel model;
 	
@@ -138,7 +154,24 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 
 	@Override
 	public void onPostViewHolderPipelineFinished() {
+		this.setProgress(0);
 		thread.start();
+	}
+
+	public int getAverageTime() {
+		return averageTime;
+	}
+
+	public void setAverageTime(int averageTime) {
+		this.averageTime = averageTime;
+	}
+
+	public float getProgress() {
+		return progress;
+	}
+
+	public void setProgress(float progress) {
+		this.progress = progress;
 	}
 	
 }

@@ -10,7 +10,7 @@ public class Statics implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private String number;
-    private String time;
+    private int time;
     private int progress;
     
 	public String getNumber() {
@@ -19,10 +19,10 @@ public class Statics implements Serializable{
 	public void setNumber(String number) {
 		this.number = number;
 	}
-	public String getTime() {
+	public int getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(int time) {
 		this.time = time;
 	}
 	public int getProgress() {

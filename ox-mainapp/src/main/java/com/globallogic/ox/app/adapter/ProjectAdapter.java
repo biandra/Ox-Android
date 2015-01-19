@@ -89,6 +89,8 @@ public class ProjectAdapter extends BaseAdapter{
             
 	        viewHolder = new ViewHolderPipeline();
 	        viewHolder.setActivity(activity);
+	        viewHolder.setAverageTime(item.getStatics().getTime());
+	        viewHolder.setProgress(item.getStatics().getProgress());
 	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	        viewHolder.setButtonShow((Button) convertView.findViewById(R.id.button_pipeline_show));
