@@ -28,6 +28,7 @@ import com.globallogic.ox.domain.ViewHolderPipeline;
 
 public class ProjectAdapter extends BaseAdapter{
 
+	private static final String BUILDING = "building";
 	private static final String SUCCESS = "success";
 	private Context context;
     private List<Project> items;
@@ -89,8 +90,7 @@ public class ProjectAdapter extends BaseAdapter{
             
 	        viewHolder = new ViewHolderPipeline();
 	        viewHolder.setActivity(activity);
-	        viewHolder.setAverageTime(item.getStatics().getTime());
-	        viewHolder.setProgress(item.getStatics().getProgress());
+	        viewHolder.setProject(item);
 	        viewHolder.setFlipper((ViewFlipper) convertView.findViewById(R.id.viewFlipper_pipeline));
 	        viewHolder.getFlipper().setDisplayedChild(0);
 	        viewHolder.setButtonShow((Button) convertView.findViewById(R.id.button_pipeline_show));
@@ -104,7 +104,7 @@ public class ProjectAdapter extends BaseAdapter{
 	        GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape_id);
 	        viewHolder.setShape(shape);
 	        
-	        if ((item.getStatus() == null) || (SUCCESS.compareTo(item.getStatus()) == 0)) {
+	        if ((item.getStatus() == null) || (SUCCESS.compareTo(item.getStatus()) == 0) || (BUILDING.compareTo(item.getStatus()) == 0)) {
 	        	 shape.setColor(Color.parseColor("#3a936f"));
 			} else {
 				shape.setColor(Color.parseColor("#7f2626"));
@@ -138,7 +138,7 @@ public class ProjectAdapter extends BaseAdapter{
 	    viewHolder.getButtonRun().setOnClickListener(new OnClickListener() {
 	        public void onClick(View v) {
 	        	flipperTemp.showNext();
-	        	viewHolder.getModel().postRun(item.getId());
+	        	viewHolder.getModel().run(item.getId());
 	        }
 	    });
 	    

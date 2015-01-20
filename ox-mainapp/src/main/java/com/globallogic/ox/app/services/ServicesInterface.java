@@ -13,6 +13,8 @@ public interface ServicesInterface {
 	
 	void getProjects(ServiceListener<List<Project>> listener, Class<Project> clazz);
 	
+	void getProject(ServiceListener<Project> listener, int idProject, Class<Project> clazz);
+	
 	void runProject(ServiceListener<ServerErrorResponse> listener, int idProject, Class<ServerErrorResponse> clazz);
 
 	void getStages(ServiceListener<List<Stage>> listener, int idProject, Class<Stage> clazz);

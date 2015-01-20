@@ -46,10 +46,15 @@ public class ServicesImpl implements ServicesInterface{
 	}
 
 	@Override
+	public void getProject(ServiceListener<Project> listener, int idProject, Class<Project> clazz) {
+		String url = URL + "/" + idProject;
+		connection.makeObjectGetRequest(url, listener, clazz);
+	}
+
+	@Override
 	public void runProject(ServiceListener<ServerErrorResponse> listener, int idProject, Class<ServerErrorResponse> clazz) {
 		String url = URL + "/" + idProject + "/runs";
 		HashMap<String, String> params = new HashMap<String, String>();
 		connection.makeObjectPostRequest(url, listener, params, clazz);
 	}
-
 }

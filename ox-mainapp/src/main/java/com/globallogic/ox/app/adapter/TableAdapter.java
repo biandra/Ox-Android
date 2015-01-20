@@ -1,7 +1,6 @@
 package com.globallogic.ox.app.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.globallogic.ox.R;
-import com.globallogic.ox.app.activities.PipelineActivity;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory;
 import com.globallogic.ox.app.component.animationFlip.AnimationFactory.FlipDirection;
 import com.globallogic.ox.domain.Stage;
@@ -27,10 +25,12 @@ import com.globallogic.ox.domain.ViewHolderStage;
 
 public class TableAdapter extends BaseAdapter {
 	
-        private Context context;
+
+		private Context context;
     
         private Table table;
         
+        private static final String BUILDING = "building";
         private static final String SUCCESS = "success";
         
         public TableAdapter(Context context, Table table) {
@@ -81,7 +81,7 @@ public class TableAdapter extends BaseAdapter {
             	        LayerDrawable bgDrawable = (LayerDrawable)layoutCellView.findViewById(R.id.viewFlipper_stage_front).getBackground();
             	        GradientDrawable shape = (GradientDrawable) bgDrawable.findDrawableByLayerId(R.id.shape_id);
             	        
-            	        if ((stage.getStatus() == null) || (SUCCESS.compareTo(stage.getStatus()) == 0)) {
+            	        if ((stage.getStatus() == null) || (SUCCESS.compareTo(stage.getStatus()) == 0) || (BUILDING.compareTo(stage.getStatus()) == 0)) {
             	        	 shape.setColor(Color.parseColor("#3a936f"));
             			} else {
             				shape.setColor(Color.parseColor("#7f2626"));

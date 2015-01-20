@@ -138,7 +138,7 @@ public class VolleyWSConnection implements WSConnection{
 			public void onResponse(JSONObject response) {
 				T object = null;
 				try {
-					if (object != null){
+					if (response != null){
 						object = jsonParser.toObject(response.toString(), clazz);
 					}
 					listener.onRequestFinished(object);

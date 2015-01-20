@@ -1,6 +1,7 @@
 package com.globallogic.ox.domain;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,9 @@ import com.globallogic.ox.app.viewmodel.ViewHolderPipelineModel;
 
 public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	
+	private static final String BUILDING = "building";
+	private static final String SUCCESS = "success";
+	
 	private static final int BLINK_TIME = 500;
 	private ViewFlipper flipper;
 	private Button buttonShow;
@@ -22,11 +26,21 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 	private GradientDrawable shape;
 	
 	private DashboardActivity activity;
+	private ViewHolderPipelineModel model;
 	private boolean blink = false;
-    private int averageTime;
-    private float progress;
-    private Thread thread;
+	private Thread thread;
+
+	private Project project;
+    private float runProgress;
 	
+    public Project getProject(){
+    	return project;
+    }
+    
+    public void setProject(Project project){
+    	this.project = project;
+    }
+    
 	public Activity getActivity() {
 		return activity;
 	}
@@ -65,6 +79,7 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 							public void run() {
 								shape.setAlpha(255);
 								ViewHolderPipeline.this.buttonRun.setVisibility(View.VISIBLE);
+								model.getPipeline(project.getId());
 							}
 				       });
 			      }catch (InterruptedException e) {
@@ -77,16 +92,14 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 
 	private boolean isInProgress() {
 		boolean inProgress = false;
-		int periodsNumber = (int)(averageTime/BLINK_TIME);
-		float progressRemaining = 100 - progress;
+		int periodsNumber = (int)(project.getStatics().getTime()/BLINK_TIME);
+		float progressRemaining = 100 - runProgress;
 		if ((periodsNumber != 0) && (float)(progressRemaining / (float)((float)100 / periodsNumber)) > 0){
-			progress = progress + (float)((float)100 / periodsNumber);
+			runProgress = runProgress + (float)((float)100 / periodsNumber);
 			inProgress = true;
 		}
 		return inProgress;
 	}
-	
-	private ViewHolderPipelineModel model;
 	
 	public ViewHolderPipeline(){
 		this.setModel(new ViewHolderPipelineModel(this));
@@ -163,7 +176,7 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 
 	@Override
 	public void onPostViewHolderPipelineFinished() {
-		this.setProgress(0);
+		this.runProgress = 0;
 		buttonRun.setVisibility(View.GONE);
 		
 		if(thread != null ) {
@@ -173,20 +186,13 @@ public class ViewHolderPipeline implements ViewHolderPipelineListener{
 		thread.start();
 	}
 
-	public int getAverageTime() {
-		return averageTime;
-	}
-
-	public void setAverageTime(int averageTime) {
-		this.averageTime = averageTime;
-	}
-
-	public float getProgress() {
-		return progress;
-	}
-
-	public void setProgress(float progress) {
-		this.progress = progress;
+	@Override
+	public void onGetViewHolderPipelineFinished(Project project) {
+        if ((project.getStatus() == null) || (SUCCESS.compareTo(project.getStatus()) == 0) || (BUILDING.compareTo(project.getStatus()) == 0)) {
+       	 	shape.setColor(Color.parseColor("#3a936f"));
+		} else {
+			shape.setColor(Color.parseColor("#7f2626"));
+		}
 	}
 	
 }
